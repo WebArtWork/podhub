@@ -3,8 +3,8 @@
 	"description": "Description which will fit on all pages",
 	"keywords": "waw, web art work, server render, template",
 	"prefix": "/podhub",
-	"favicon": "img/favicon.ico",
-	"image": "https://webartwork.github.io/podhub/img/avatar.png",
+	"favicon": "img/favicon.jpg",
+	"image": "https://podhubvape.shop/img/bull.image.jpg",
 	"author": "Honchar Denys",
 	"scss": "scss/index.scss",
 	"variables": {
