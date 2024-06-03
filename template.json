@@ -2,9 +2,9 @@
 	"title": "Title which will fit on all pages",
 	"description": "Description which will fit on all pages",
 	"keywords": "waw, web art work, server render, template",
-	"prefix": "/wjst-default",
+	"prefix": "/podhub",
 	"favicon": "img/favicon.ico",
-	"image": "https://webartwork.github.io/wjst-default/img/avatar.png",
+	"image": "https://webartwork.github.io/podhub/img/avatar.png",
 	"author": "Honchar Denys",
 	"scss": "scss/index.scss",
 	"variables": {
