@@ -63,6 +63,10 @@ AOS.init({
 	// Scrollax
 	$.Scrollax();
 
+	$('#home-slider').on('touchmove', function (e) {
+		e.stopPropagation();
+	});
+
 	var carousel = function () {
 		$(".home-slider").owlCarousel({
 			touchDrag: false, // Disable touch drag
