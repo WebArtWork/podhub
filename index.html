@@ -122,7 +122,7 @@
 	</nav>
 	<!-- END nav -->
 
-	<section id="home-section" class="hero">
+	<!-- <section id="home-section" class="hero">
 	<div class="home-slider owl-carousel">
 		<div class="slider-item" style="background-image: url(img/bull.jpg);">
 			<div class="overlay"></div>
@@ -172,7 +172,74 @@
 			</div>
 		</div>
 	</div>
+</section> -->
+
+<style>
+	.hero {
+		height: 100vh;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		transition: background-image 1s ease-in-out;
+	}
+	.hero .overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+	}
+	.hero-content {
+		position: relative;
+		z-index: 2;
+		color: white;
+		text-align: center;
+	}
+	.btn-primary {
+		background-color: #6a983c;
+		border-color: #6a983c;
+	}
+</style>
+<section
+	id="home-section"
+	class="hero d-flex justify-content-center align-items-center"
+	style="background-image: url('img/bull.jpg')"
+>
+	<div class="overlay"></div>
+	<div class="hero-content container">
+		<h1 class="mb-2 text-white" id="hero-title">Podhub</h1>
+		<h2 class="subheading mb-4 text-white" id="hero-text">
+			Один клік до нового досвіду:<br />вейпи та одноразки для кожного
+			смаку
+		</h2>
+		<!-- <p><a href="/checkout" class="btn btn-primary">Купити</a></p> -->
+	</div>
 </section>
+<script>
+	let view = true;
+
+	function changeView() {
+		const heroSection = document.getElementById("home-section");
+		const heroTitle = document.getElementById("hero-title");
+		const heroText = document.getElementById("hero-text");
+
+		if (view) {
+			heroSection.style.backgroundImage = "url('img/bull2.jpg')";
+			heroTitle.textContent = "Vape shop";
+			heroText.innerHTML =
+				"Готовий радувати своїх клієнтів<br>широким та смачненьким асортиментом!";
+		} else {
+			heroSection.style.backgroundImage = "url('img/bull.jpg')";
+			heroTitle.textContent = "Podhub";
+			heroText.innerHTML =
+				"Один клік до нового досвіду:<br>вейпи та одноразки для кожного смаку";
+		}
+		view = !view;
+	}
+
+	setInterval(changeView, 5000); // Change view every 5 seconds
+</script>
 
 <section class="ftco-section">
 	<div class="container">
@@ -186,12 +253,15 @@
 	</div>
 	<div class="container">
 		<div class="row">
-
 			
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"><img class="img-fluid" src="products/product1.jpg"
-							alt="Colorlib Template">
+					<a href="#" class="img-prod"
+						><img
+							class="img-fluid"
+							src="products/product1.jpg"
+							alt="Colorlib Template"
+						/>
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
@@ -199,12 +269,22 @@
 						<h3><a href="#">Картриджі XROS series 2ML 0.6|0.8|1.0|1.2 ohm (Vaporesso)</a></h3>
 						<div class="d-flex">
 							<div class="pricing">
-								<p class="price"><span class="price-sale">150 грн</span></p>
+								<p class="price">
+									<span class="price-sale"
+										>150 грн</span
+									>
+								</p>
 							</div>
 						</div>
 						<div class="bottom-area d-flex px-3">
-							<div class="m-auto d-flex">
-								<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+							<div
+								class="m-auto d-flex addProductButton"
+								product="{&quot;id&quot;:1,&quot;name&quot;:&quot;Картриджі XROS series 2ML 0.6|0.8|1.0|1.2 ohm (Vaporesso)&quot;,&quot;price&quot;:150,&quot;thumb&quot;:&quot;products/product1.jpg&quot;}"
+							>
+								<a
+									href="/checkout"
+									class="buy-now d-flex justify-content-center align-items-center mx-1"
+								>
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 							</div>
@@ -215,8 +295,12 @@
 			
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"><img class="img-fluid" src="products/product2.jpg"
-							alt="Colorlib Template">
+					<a href="#" class="img-prod"
+						><img
+							class="img-fluid"
+							src="products/product2.jpg"
+							alt="Colorlib Template"
+						/>
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
@@ -224,12 +308,22 @@
 						<h3><a href="#">Vaporesso XROS MINI POD KIT</a></h3>
 						<div class="d-flex">
 							<div class="pricing">
-								<p class="price"><span class="price-sale">700 грн</span></p>
+								<p class="price">
+									<span class="price-sale"
+										>700 грн</span
+									>
+								</p>
 							</div>
 						</div>
 						<div class="bottom-area d-flex px-3">
-							<div class="m-auto d-flex">
-								<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+							<div
+								class="m-auto d-flex addProductButton"
+								product="{&quot;id&quot;:2,&quot;name&quot;:&quot;Vaporesso XROS MINI POD KIT&quot;,&quot;price&quot;:700,&quot;thumb&quot;:&quot;products/product2.jpg&quot;}"
+							>
+								<a
+									href="/checkout"
+									class="buy-now d-flex justify-content-center align-items-center mx-1"
+								>
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 							</div>
@@ -240,8 +334,12 @@
 			
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"><img class="img-fluid" src="products/product3.jpg"
-							alt="Colorlib Template">
+					<a href="#" class="img-prod"
+						><img
+							class="img-fluid"
+							src="products/product3.jpg"
+							alt="Colorlib Template"
+						/>
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
@@ -249,12 +347,22 @@
 						<h3><a href="#">VAPORESSO XROS 4 MINI POD KIT</a></h3>
 						<div class="d-flex">
 							<div class="pricing">
-								<p class="price"><span class="price-sale">850 грн</span></p>
+								<p class="price">
+									<span class="price-sale"
+										>850 грн</span
+									>
+								</p>
 							</div>
 						</div>
 						<div class="bottom-area d-flex px-3">
-							<div class="m-auto d-flex">
-								<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+							<div
+								class="m-auto d-flex addProductButton"
+								product="{&quot;id&quot;:3,&quot;name&quot;:&quot;VAPORESSO XROS 4 MINI POD KIT&quot;,&quot;price&quot;:850,&quot;thumb&quot;:&quot;products/product3.jpg&quot;}"
+							>
+								<a
+									href="/checkout"
+									class="buy-now d-flex justify-content-center align-items-center mx-1"
+								>
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 							</div>
@@ -265,8 +373,12 @@
 			
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"><img class="img-fluid" src="products/product4.jpg"
-							alt="Colorlib Template">
+					<a href="#" class="img-prod"
+						><img
+							class="img-fluid"
+							src="products/product4.jpg"
+							alt="Colorlib Template"
+						/>
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
@@ -274,12 +386,22 @@
 						<h3><a href="#">VAPORESSO XROS 4 POD KIT</a></h3>
 						<div class="d-flex">
 							<div class="pricing">
-								<p class="price"><span class="price-sale">1250 грн</span></p>
+								<p class="price">
+									<span class="price-sale"
+										>1250 грн</span
+									>
+								</p>
 							</div>
 						</div>
 						<div class="bottom-area d-flex px-3">
-							<div class="m-auto d-flex">
-								<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+							<div
+								class="m-auto d-flex addProductButton"
+								product="{&quot;id&quot;:4,&quot;name&quot;:&quot;VAPORESSO XROS 4 POD KIT&quot;,&quot;price&quot;:1250,&quot;thumb&quot;:&quot;products/product4.jpg&quot;}"
+							>
+								<a
+									href="/checkout"
+									class="buy-now d-flex justify-content-center align-items-center mx-1"
+								>
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 							</div>
@@ -288,46 +410,130 @@
 				</div>
 			</div>
 			
-
 		</div>
 	</div>
 </section>
+<script type="module">
+	function loadOrder() {
+		let order = localStorage.getItem("order");
+		if (order) {
+			return JSON.parse(order);
+		} else {
+			// If no order exists, initialize an empty order
+			return { products: [] };
+		}
+	}
 
-<hr>
+	// Function to save order info to local storage
+	function saveOrder(order) {
+		localStorage.setItem("order", JSON.stringify(order));
+	}
+	document.addEventListener("DOMContentLoaded", function () {
+		const order = loadOrder();
+
+		let buttons = document.querySelectorAll(".addProductButton");
+		const clicked = (button) => {
+			return () => {
+				const product = JSON.parse(button.getAttribute("product"));
+				const getProduct = order.products.find(
+					(p) => p.id === product.id
+				);
+				if (getProduct) {
+					getProduct.quantity++;
+				} else {
+					order.products.push({ ...product, quantity: 1 });
+				}
+				console.log(order);
+				saveOrder(order);
+			};
+		};
+		buttons.forEach(function (button) {
+			button.addEventListener("click", clicked(button));
+		});
+	});
+</script>
+
+<hr />
 
 <section class="ftco-section ftco-partner">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/flavorlab.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/flavorlab.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/vaporesso.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/vaporesso.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/voopoo.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/voopoo.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/alchemist.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/alchemist.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/octobar.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/octobar.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/chaserlab.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/chaserlab.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/mixbar.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/mixbar.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/fluffypuff.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/fluffypuff.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/lostvape.png" class="img-fluid" alt="Colorlib Template"></a>
+				<a href="#" class="partner"
+					><img
+						src="img/lostvape.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></a>
 			</div>
 		</div>
 	</div>
 </section>
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row">

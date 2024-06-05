@@ -18,21 +18,25 @@
 	],
 	"top_products": [
 		{
+			"id": 1,
 			"name": "Картриджі XROS series 2ML 0.6|0.8|1.0|1.2 ohm (Vaporesso)",
 			"price": 150,
 			"thumb": "products/product1.jpg"
 		},
 		{
+			"id": 2,
 			"name": "Vaporesso XROS MINI POD KIT",
 			"price": 700,
 			"thumb": "products/product2.jpg"
 		},
 		{
+			"id": 3,
 			"name": "VAPORESSO XROS 4 MINI POD KIT",
 			"price": 850,
 			"thumb": "products/product3.jpg"
 		},
 		{
+			"id": 4,
 			"name": "VAPORESSO XROS 4 POD KIT",
 			"price": 1250,
 			"thumb": "products/product4.jpg"

@@ -68,7 +68,7 @@ AOS.init({
 	});
 
 	var carousel = function () {
-		$(".home-slider").owlCarousel({
+		/* $(".home-slider").owlCarousel({
 			touchDrag: false, // Disable touch drag
 			loop: true,
 			autoplay: true,
@@ -93,7 +93,7 @@ AOS.init({
 					items: 1,
 				},
 			},
-		});
+		}); */
 
 		$(".carousel-testimony").owlCarousel({
 			center: true,

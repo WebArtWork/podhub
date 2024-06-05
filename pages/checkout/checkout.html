@@ -22,101 +22,16 @@
 					<table class="table">
 						<thead class="thead-primary">
 							<tr class="text-center">
-								<th>&nbsp;</th>
-								<th>&nbsp;</th>
+								<th>Фото</th>
 								<th>Товар</th>
 								<th>Ціна</th>
 								<th>Кількість</th>
 								<th>Сумарно</th>
+								<th>Комент</th>
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="text-center">
-								<td class="product-remove">
-									<a href="#"
-										><span class="ion-ios-close"></span
-									></a>
-								</td>
-
-								<td class="image-prod">
-									<div
-										class="img"
-										style="
-											background-image: url(images/product-3.jpg);
-										"
-									></div>
-								</td>
-
-								<td class="product-name">
-									<h3>Bell Pepper</h3>
-									<p>
-										Far far away, behind the word mountains,
-										far from the countries
-									</p>
-								</td>
-
-								<td class="price">$4.90</td>
-
-								<td class="quantity">
-									<div class="input-group mb-3">
-										<input
-											type="text"
-											name="quantity"
-											class="quantity form-control input-number"
-											value="1"
-											min="1"
-											max="100"
-										/>
-									</div>
-								</td>
-
-								<td class="total">$4.90</td>
-							</tr>
-							<!-- END TR-->
-
-							<tr class="text-center">
-								<td class="product-remove">
-									<a href="#"
-										><span class="ion-ios-close"></span
-									></a>
-								</td>
-
-								<td class="image-prod">
-									<div
-										class="img"
-										style="
-											background-image: url(images/product-4.jpg);
-										"
-									></div>
-								</td>
-
-								<td class="product-name">
-									<h3>Bell Pepper</h3>
-									<p>
-										Far far away, behind the word mountains,
-										far from the countries
-									</p>
-								</td>
-
-								<td class="price">$15.70</td>
-
-								<td class="quantity">
-									<div class="input-group mb-3">
-										<input
-											type="text"
-											name="quantity"
-											class="quantity form-control input-number"
-											value="1"
-											min="1"
-											max="100"
-										/>
-									</div>
-								</td>
-
-								<td class="total">$15.70</td>
-							</tr>
-							<!-- END TR-->
-						</tbody>
+						<tbody id="orderTableBody"></tbody>
 					</table>
 				</div>
 			</div>
@@ -212,7 +127,7 @@
 							<h3 class="billing-heading mb-4">Кошик</h3>
 							<p class="d-flex total-price">
 								<span>Сумарно</span>
-								<span>300.00грн</span>
+								<span id="allTotal"></span>
 							</p>
 							<hr />
 						</div>
@@ -224,7 +139,91 @@
 	</div>
 </section>
 
-<script>
+<script type="module">
+	function loadOrder() {
+		let order = localStorage.getItem("order");
+		if (order) {
+			return JSON.parse(order);
+		} else {
+			// If no order exists, initialize an empty order
+			return { products: [] };
+		}
+	}
+
+	// Function to save order info to local storage
+	function saveOrder(order) {
+		localStorage.setItem("order", JSON.stringify(order));
+	}
+	document.addEventListener("DOMContentLoaded", function () {
+		const order = loadOrder();
+		console.log(order);
+		const tableBody = document.getElementById('orderTableBody');
+		tableBody.innerHTML = ''; // Clear existing table rows
+
+		order.products.forEach(product => {
+			const row = document.createElement('tr');
+			row.id = 'productId' + product.id;
+			row.className = 'text-center';
+
+			row.innerHTML = `
+	           <td class="image-prod">
+	               <div class="img" style="background-image: url(${product.thumb});"></div>
+	           </td>
+	           <td class="product-name">
+	               <h3>${product.name}</h3>
+	           </td>
+	           <td class="price">${product.price.toFixed(2)} грн</td>
+	           <td class="quantity">
+	               <div class="input-group mb-3">
+	                   <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${product.quantity}" min="1" max="100" product='${JSON.stringify(product)}' />
+	               </div>
+	           </td>
+	           <td class="total" id="total${product.id}">${(product.price * product.quantity).toFixed(2)} грн</td>
+	           <td class="product-remove">
+	               <div class="input-group mb-3">
+	                   <input type="string" name="comment" class="quantity form-control changeComment" value="${product.comment || ''}" product='${JSON.stringify(product)}' placeholder='' />
+	               </div>
+	           </td>
+	           <td class="product-remove">
+	               <span class="ion-ios-close removeProduct" product='${JSON.stringify(product)}'></span>
+	           </td>
+	       `;
+			tableBody.appendChild(row);
+		});
+
+		let buttons = document.querySelectorAll(".removeProduct");
+		const clicked = (button) => {
+			return () => {
+				const product = JSON.parse(button.getAttribute("product"));
+				order.products = order.products.filter(
+					(p) => p.id !== product.id
+				);
+				saveOrder(order);
+				let row = document.getElementById(`productId${product.id}`);
+				if (row) {
+					row.remove();
+				}
+			};
+		};
+		buttons.forEach(function (button) {
+			button.addEventListener("click", clicked(button));
+		});
+
+		let inputs = document.querySelectorAll(".changeQuantity");
+		const changed = (input) => {
+			return () => {
+				const product = JSON.parse(input.getAttribute("product"));
+				const getProduct = order.products.find(p => p.id === product.id);
+				getProduct.quantity = Number(input.value);
+				saveOrder(order);
+				document.getElementById('total' + product.id).innerHTML = (product.price * Number(input.value)).toFixed(2) + 'грн';
+			};
+		};
+		inputs.forEach(function (input) {
+			input.addEventListener("change", changed(input));
+		});
+	});
+
 	document
 		.getElementById("billing-form")
 		.addEventListener("submit", function (event) {
