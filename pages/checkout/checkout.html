@@ -154,20 +154,29 @@
 	function saveOrder(order) {
 		localStorage.setItem("order", JSON.stringify(order));
 	}
+	const total = (order) => {
+		return (
+			order.products.reduce((total, item) => {
+				return total + item.price * item.quantity;
+			}, 0) + " грн"
+		);
+	};
 	document.addEventListener("DOMContentLoaded", function () {
 		const order = loadOrder();
 		console.log(order);
-		const tableBody = document.getElementById('orderTableBody');
-		tableBody.innerHTML = ''; // Clear existing table rows
+		const tableBody = document.getElementById("orderTableBody");
+		tableBody.innerHTML = ""; // Clear existing table rows
 
-		order.products.forEach(product => {
-			const row = document.createElement('tr');
-			row.id = 'productId' + product.id;
-			row.className = 'text-center';
+		order.products.forEach((product) => {
+			const row = document.createElement("tr");
+			row.id = "productId" + product.id;
+			row.className = "text-center";
 
 			row.innerHTML = `
 	           <td class="image-prod">
-	               <div class="img" style="background-image: url(${product.thumb});"></div>
+	               <div class="img" style="background-image: url(${
+						product.thumb
+					});"></div>
 	           </td>
 	           <td class="product-name">
 	               <h3>${product.name}</h3>
@@ -175,21 +184,37 @@
 	           <td class="price">${product.price.toFixed(2)} грн</td>
 	           <td class="quantity">
 	               <div class="input-group mb-3">
-	                   <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${product.quantity}" min="1" max="100" product='${JSON.stringify(product)}' />
+	                   <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${
+							product.quantity
+						}" min="1" max="100" product='${JSON.stringify(
+				product
+			)}' />
 	               </div>
 	           </td>
-	           <td class="total" id="total${product.id}">${(product.price * product.quantity).toFixed(2)} грн</td>
+	           <td class="total" id="total${product.id}">${(
+				product.price * product.quantity
+			).toFixed(2)} грн</td>
 	           <td class="product-remove">
 	               <div class="input-group mb-3">
-	                   <input type="string" name="comment" class="quantity form-control changeComment" value="${product.comment || ''}" product='${JSON.stringify(product)}' placeholder='' />
+	                   <input type="string" name="comment" class="quantity form-control changeComment" value="${
+							product.comment || ""
+						}" product='${JSON.stringify(
+				product
+			)}' placeholder='' />
 	               </div>
 	           </td>
 	           <td class="product-remove">
-	               <span class="ion-ios-close removeProduct" product='${JSON.stringify(product)}'></span>
+	               <span class="ion-ios-close removeProduct" product='${JSON.stringify(
+						product
+					)}'></span>
 	           </td>
 	       `;
 			tableBody.appendChild(row);
 		});
+		document.getElementById("allTotal").innerHTML =
+			order.products.reduce((total, item) => {
+				return total + item.price * item.quantity;
+			}, 0) + " грн";
 
 		let buttons = document.querySelectorAll(".removeProduct");
 		const clicked = (button) => {
@@ -213,21 +238,65 @@
 		const changed = (input) => {
 			return () => {
 				const product = JSON.parse(input.getAttribute("product"));
-				const getProduct = order.products.find(p => p.id === product.id);
+				const getProduct = order.products.find(
+					(p) => p.id === product.id
+				);
 				getProduct.quantity = Number(input.value);
 				saveOrder(order);
-				document.getElementById('total' + product.id).innerHTML = (product.price * Number(input.value)).toFixed(2) + 'грн';
+				document.getElementById("total" + product.id).innerHTML =
+					(product.price * Number(input.value)).toFixed(2) + " грн";
+				document.getElementById("allTotal").innerHTML = total(order);
 			};
 		};
 		inputs.forEach(function (input) {
 			input.addEventListener("change", changed(input));
 		});
+
+		let cinputs = document.querySelectorAll(".changeComment");
+		const cchanged = (input) => {
+			return () => {
+				const product = JSON.parse(input.getAttribute("product"));
+				const getProduct = order.products.find(
+					(p) => p.id === product.id
+				);
+				getProduct.comment = input.value;
+				saveOrder(order);
+			};
+		};
+		cinputs.forEach(function (input) {
+			input.addEventListener("change", cchanged(input));
+		});
 	});
 
+	const id = () => {
+		const now = new Date();
+		const year = now.getFullYear().toString().slice(-2); // Short year
+		const month = (now.getMonth() + 1).toString().padStart(2, "0"); // Month (0-indexed, so add 1)
+		const date = now.getDate().toString().padStart(2, "0"); // Date
+		const hours = now.getHours().toString().padStart(2, "0"); // Hours
+		const minutes = now.getMinutes().toString().padStart(2, "0"); // Minutes
+
+		return `${year}-${month}-${date} ${hours}:${minutes}`;
+	};
+	const productsText = () => {
+		const order = loadOrder();
+		let text = "===================\n";
+		for (const product of order.products) {
+			text += `Товар: ${product.name}\nЦіна: ${product.price} грн\nКількість: ${product.quantity}\nКоммент: ${product.comment}\n===================\n`;
+		}
+		text += `Все разом: ${total(order)}\n`;
+		return text;
+	};
+
+	let submited = false;
 	document
 		.getElementById("billing-form")
 		.addEventListener("submit", function (event) {
 			event.preventDefault();
+			if (submited) {
+				return;
+			}
+			submited = true;
 
 			const firstname = document.getElementById("firstname").value;
 			const lastname = document.getElementById("lastname").value;
@@ -246,7 +315,7 @@
 			) {
 				const data = {
 					chatid: -4280773078,
-					message: `First Name: ${firstname}\nLast Name: ${lastname}\nTown/City: ${towncity}\nNova poshta number: ${postcodezip}\nPhone: ${phone}\nEmail: ${emailaddress}`,
+					message: `Замовлення ${id()}\n${productsText()}Ім'я: ${firstname}\nПрізвище: ${lastname}\nНаселений пункт: ${towncity}\nНомер Нової пошти: ${postcodezip}\nТелефон: ${phone}\nЕлекторнна адреса: ${emailaddress}`,
 				};
 
 				fetch("https://webart.work/api/bot/message", {
@@ -258,15 +327,15 @@
 				})
 					.then((response) => response.json())
 					.then((data) => {
-						alert("Form submitted successfully");
-						// Optionally reset the form here
-						// document.getElementById('billing-form').reset();
+						localStorage.removeItem("order");
+						alert("замовлення прийнято");
+						window.location.href = '/';
 					})
 					.catch((error) => {
 						console.error("Error:", error);
 					});
 			} else {
-				alert("Please fill in all fields");
+				alert("Заповніть всі поля");
 			}
 		});
 </script>
