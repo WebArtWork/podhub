@@ -201,8 +201,8 @@
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
-					<div class="text py-3 pb-4 px-3 text-center">
-						<h3><a href="#">{{{product.name}}}</a></h3>
+					<!-- <div class="text py-3 pb-4 px-3 text-center">
+						<h3>{{{product.name}}}</h3>
 						<div class="d-flex">
 							<div class="pricing">
 								<p class="price">
@@ -218,7 +218,32 @@
 								</a>
 							</div>
 						</div>
+					</div> -->
+
+					<div class="text py-3 pb-4 px-3 text-center">
+						<h3>{{{product.name}}}</h3>
+						<div class="d-flex">
+							<div class="pricing">
+								<p class="price">
+									<span class="price-sale">{{{product.price}}} грн</span>
+								</p>
+							</div>
+						</div>
+						<div class="bottom-area d-flex px-3">
+							<div class="m-auto d-flex addProductButton" product="{{{product|json}}}">
+								<a href="/checkout" class="buy-now d-flex justify-content-center align-items-center mx-1">
+									<span><i class="ion-ios-cart"></i></span>
+								</a>
+							</div>
+						</div>
 					</div>
+					<!-- Кнопка корзинки для мобільної версії -->
+					<div class="mobile-cart">
+						<a href="/checkout" class="buy-now d-flex justify-content-center align-items-center">
+							<span><i class="ion-ios-cart"></i></span>
+						</a>
+					</div>
+
 				</div>
 			</div>
 			{% endfor %}

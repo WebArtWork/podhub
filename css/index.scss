@@ -1,0 +1,40 @@
+/* Загальний стиль для корзинки */
+.addProductButton {
+    /* Ваші існуючі стилі для корзинки */
+}
+
+/* Стиль для мобільної корзинки */
+.mobile-cart {
+    display: none; /* Сховано за замовчуванням */
+}
+
+/* Стиль для мобільної версії */
+@media (max-width: 767px) {
+    .mobile-cart {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 10px;
+        right: 50px; /* Зміщення трохи лівіше */
+        z-index: 1000;
+        background-color: #fff; /* Можливо, потрібно додати фон */
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    .mobile-cart .buy-now {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #82ae46; /* Салатовий колір */
+        color: white;
+    }
+
+    .mobile-cart .buy-now i {
+        font-size: 24px;
+    }
+}
