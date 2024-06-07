@@ -1,29 +1,50 @@
-// /* Загальні стилі */
-// .text {
-//     position: relative;
-// }
+/* Приховати веб-кнопку кошика у мобільній версії */
+@media (max-width: 767px) {
+    .web-cart {
+        display: none;
+    }
+}
 
-// .bottom-area {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
+/* Стиль для мобільної корзинки */
+.mobile-cart {
+    display: none;
+    /* Сховано за замовчуванням */
+}
 
-// /* Стилі для мобільної версії */
-// @media (max-width: 768px) {
-//     .buy-now {
-//         width: 100%;
-//         display: flex;
-//         justify-content: center;
-//     }
+/* Стиль для мобільної версії */
+@media (max-width: 767px) {
+    .mobile-cart {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 10px;
+        right: 50px;
+        /* Зміщення трохи лівіше */
+        z-index: 1000;
+        background-color: #82ae46;
+        /* Салатовий колір */
+        border-radius: 50%;
+        padding: 5px;
+        /* Зменшена відстань */
+    }
 
-//     .buy-now span {
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//     }
+    .mobile-cart .buy-now {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        /* Зменшений розмір кнопки */
+        height: 35px;
+        /* Зменшений розмір кнопки */
+        border-radius: 50%;
+        background-color: #82ae46;
+        /* Салатовий колір */
+        color: white;
+    }
 
-//     .ion-ios-cart {
-//         font-size: 24px;
-//     }
-// }
+    .mobile-cart .buy-now i {
+        font-size: 20px;
+        /* Зменшений розмір іконки */
+    }
+}
