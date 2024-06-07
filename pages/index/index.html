@@ -120,13 +120,16 @@
 	setInterval(changeView, 5000); // Change view every 5 seconds
 </script> -->
 
-<section id="home-section" class="hero d-flex justify-content-center align-items-center">
+<section
+	id="home-section"
+	class="hero d-flex justify-content-center align-items-center"
+>
 	<div class="overlay"></div>
 	<div class="hero-content container">
 		<h1 class="mb-2 text-white" id="hero-title">Podhub | Vape shop</h1>
 		<h2 class="subheading mb-4 text-white" id="hero-text">
-			Один клік до нового досвіду:<br />вейпи, PODіки та одноразки для кожного
-			смаку
+			Один клік до нового досвіду:<br />вейпи, PODіки та одноразки для
+			кожного смаку
 		</h2>
 	</div>
 </section>
@@ -139,7 +142,8 @@
 		const heroTitle = document.getElementById("hero-title");
 		const heroText = document.getElementById("hero-text");
 
-		if (window.innerWidth > 768) { // If the viewport width is greater than 768px (desktop)
+		if (window.innerWidth > 768) {
+			// If the viewport width is greater than 768px (desktop)
 			if (view) {
 				heroSection.style.backgroundImage = "url('img/bull2.jpg')";
 				heroTitle.textContent = "Podhub | Vape shop";
@@ -152,7 +156,8 @@
 					"Один клік до нового досвіду:<br>вейпи, PODіки та одноразки для кожного смаку";
 			}
 			view = !view;
-		} else { // If the viewport width is less than or equal to 768px (mobile)
+		} else {
+			// If the viewport width is less than or equal to 768px (mobile)
 			heroSection.style.backgroundImage = "url('img/bull-mobile.jpg')";
 			heroTitle.textContent = "Podhub | Vape shop";
 			heroText.innerHTML =
@@ -164,18 +169,18 @@
 
 	// Initial view setup
 	changeView();
-	window.addEventListener('resize', changeView); // Recalculate on resize
+	window.addEventListener("resize", changeView); // Recalculate on resize
 </script>
 
 <style>
 	#home-section {
-		background-image: url('img/bull.jpg');
+		background-image: url("img/bull.jpg");
 		/* Default background for desktop */
 	}
 
 	@media (max-width: 768px) {
 		#home-section {
-			background-image: url('img/bull-mobile.jpg') !important;
+			background-image: url("img/bull-mobile.jpg") !important;
 			/* Override background for mobile */
 		}
 	}
@@ -196,8 +201,12 @@
 			{% for product in top_products %}
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"><img class="img-fluid" src="{{{product.thumb}}}"
-							alt="Colorlib Template" />
+					<a href="#" class="img-prod"
+						><img
+							class="img-fluid"
+							src="{{{product.thumb}}}"
+							alt="Colorlib Template"
+						/>
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
@@ -206,14 +215,21 @@
 						<div class="d-flex">
 							<div class="pricing">
 								<p class="price">
-									<span class="price-sale">{{{product.price}}} грн</span>
+									<span class="price-sale"
+										>{{{product.price}}} грн</span
+									>
 								</p>
 							</div>
 						</div>
 						<div class="bottom-area d-flex px-3">
-							<div class="m-auto d-flex addProductButton" product="{{{product|json}}}">
-								<a href="/checkout"
-									class="buy-now d-flex justify-content-center align-items-center mx-1">
+							<div
+								class="m-auto d-flex addProductButton"
+								product="{{{product|json}}}"
+							>
+								<a
+									href="/checkout"
+									class="buy-now d-flex justify-content-center align-items-center mx-1"
+								>
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 							</div>
@@ -229,6 +245,9 @@
 	function loadOrder() {
 		let order = localStorage.getItem("order");
 		if (order) {
+			document.getElementById("cartCounter").innerHTML = (
+				JSON.parse(order).products || []
+			).length.toString();
 			return JSON.parse(order);
 		} else {
 			// If no order exists, initialize an empty order
@@ -238,6 +257,8 @@
 
 	// Function to save order info to local storage
 	function saveOrder(order) {
+		document.getElementById("cartCounter").innerHTML =
+			order.products.length.toString();
 		localStorage.setItem("order", JSON.stringify(order));
 	}
 	document.addEventListener("DOMContentLoaded", function () {
@@ -271,36 +292,76 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/flavorlab.png" class="img-fluid"
-						alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/flavorlab.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/vaporesso.png" class="img-fluid"
-						alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/vaporesso.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/voopoo.png" class="img-fluid" alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/voopoo.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/alchemist.png" class="img-fluid"
-						alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/alchemist.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/octobar.png" class="img-fluid" alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/octobar.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/chaserlab.png" class="img-fluid"
-						alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/chaserlab.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/mixbar.png" class="img-fluid" alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/mixbar.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/fluffypuff.png" class="img-fluid"
-						alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/fluffypuff.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<a href="#" class="partner"><img src="img/lostvape.png" class="img-fluid" alt="Colorlib Template" /></a>
+				<span class="partner"
+					><img
+						src="img/lostvape.png"
+						class="img-fluid"
+						alt="Colorlib Template"
+				/></span>
 			</div>
 		</div>
 	</div>
