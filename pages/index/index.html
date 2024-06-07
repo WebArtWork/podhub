@@ -120,10 +120,7 @@
 	setInterval(changeView, 5000); // Change view every 5 seconds
 </script> -->
 
-<section
-	id="home-section"
-	class="hero d-flex justify-content-center align-items-center"
->
+<section id="home-section" class="hero d-flex justify-content-center align-items-center">
 	<div class="overlay"></div>
 	<div class="hero-content container">
 		<h1 class="mb-2 text-white" id="hero-title">Podhub | Vape shop</h1>
@@ -201,41 +198,11 @@
 			{% for product in top_products %}
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<a href="#" class="img-prod"
-						><img
-							class="img-fluid"
-							src="{{{product.thumb}}}"
-							alt="Colorlib Template"
-						/>
+					<a href="#" class="img-prod"><img class="img-fluid" src="{{{product.thumb}}}"
+							alt="Colorlib Template" />
 						<!-- <span class="status">30%</span> -->
 						<div class="overlay"></div>
 					</a>
-					<!-- <div class="text py-3 pb-4 px-3 text-center">
-						<h3>{{{product.name}}}</h3>
-						<div class="d-flex">
-							<div class="pricing">
-								<p class="price">
-									<span class="price-sale"
-										>{{{product.price}}} грн</span
-									>
-								</p>
-							</div>
-						</div>
-						<div class="bottom-area d-flex px-3">
-							<div
-								class="m-auto d-flex addProductButton"
-								product="{{{product|json}}}"
-							>
-								<a
-									href="/checkout"
-									class="buy-now d-flex justify-content-center align-items-center mx-1"
-								>
-									<span><i class="ion-ios-cart"></i></span>
-								</a>
-							</div>
-						</div>
-					</div> -->
-
 					<div class="text py-3 pb-4 px-3 text-center">
 						<h3>{{{product.name}}}</h3>
 						<div class="d-flex">
@@ -247,17 +214,12 @@
 						</div>
 						<div class="bottom-area d-flex px-3">
 							<div class="m-auto d-flex addProductButton" product="{{{product|json}}}">
-								<a href="/checkout" class="buy-now d-flex justify-content-center align-items-center mx-1">
+								<a href="/checkout"
+									class="buy-now d-flex justify-content-center align-items-center mx-1">
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 							</div>
 						</div>
-					</div>
-					<!-- Кнопка корзинки для мобільної версії -->
-					<div class="mobile-cart">
-						<a href="/checkout" class="buy-now d-flex justify-content-center align-items-center">
-							<span><i class="ion-ios-cart"></i></span>
-						</a>
 					</div>
 
 				</div>
@@ -317,76 +279,31 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/flavorlab.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/flavorlab.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/vaporesso.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/vaporesso.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/voopoo.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/voopoo.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/alchemist.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/alchemist.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/octobar.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/octobar.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/chaserlab.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/chaserlab.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/mixbar.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/mixbar.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/fluffypuff.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/fluffypuff.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 			<div class="col-sm ftco-animate">
-				<span class="partner"
-					><img
-						src="img/lostvape.png"
-						class="img-fluid"
-						alt="Colorlib Template"
-				/></span>
+				<span class="partner"><img src="img/lostvape.png" class="img-fluid" alt="Colorlib Template" /></span>
 			</div>
 		</div>
 	</div>
