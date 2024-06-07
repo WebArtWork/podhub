@@ -1,4 +1,7 @@
-<div class="hero-wrap hero-bread" style="background-image: url('img/smoke.jpg')">
+<div
+	class="hero-wrap hero-bread"
+	style="background-image: url('img/smoke.jpg')"
+>
 	<div class="container">
 		<div
 			class="row no-gutters slider-text align-items-center justify-content-center"
@@ -143,6 +146,9 @@
 	function loadOrder() {
 		let order = localStorage.getItem("order");
 		if (order) {
+			document.getElementById("cartCounter").innerHTML = (
+				JSON.parse(order).products || []
+			).length.toString();
 			return JSON.parse(order);
 		} else {
 			// If no order exists, initialize an empty order
@@ -152,6 +158,9 @@
 
 	// Function to save order info to local storage
 	function saveOrder(order) {
+		document.getElementById("cartCounter").innerHTML = (
+			order.products || []
+		).length.toString();
 		localStorage.setItem("order", JSON.stringify(order));
 	}
 	const total = (order) => {
@@ -163,7 +172,6 @@
 	};
 	document.addEventListener("DOMContentLoaded", function () {
 		const order = loadOrder();
-		console.log(order);
 		const tableBody = document.getElementById("orderTableBody");
 		tableBody.innerHTML = ""; // Clear existing table rows
 
@@ -329,7 +337,7 @@
 					.then((data) => {
 						localStorage.removeItem("order");
 						alert("замовлення прийнято");
-						window.location.href = '/';
+						window.location.href = "/";
 					})
 					.catch((error) => {
 						console.error("Error:", error);
