@@ -189,18 +189,17 @@
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<span class="subheading">Товари</span>
 				<h2 class="mb-4">Хіти продажу</h2>
-				<!-- <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p> -->
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	<!-- <div class="container">
 		<div class="row">
 			{% for product in top_products %}
 			<div class="col-md-6 col-lg-3 ftco-animate">
 				<div class="product">
-					<!-- <a href="#" class="img-prod"></a> -->
+					<a href="#" class="img-prod"></a>
 					<img class="img-fluid" src="{{{product.thumb}}}" alt="Colorlib Template" />
-					<!-- <span class="status">30%</span> -->
+					<span class="status">30%</span>
 					<div class="overlay"></div>
 					<div class="text py-3 pb-4 px-3 text-center">
 						<h3>{{{product.name}}}</h3>
@@ -235,6 +234,29 @@
 
 
 
+			</div>
+			{% endfor %}
+		</div>
+	</div> -->
+	<div class="container">
+		<div class="row">
+			{% for product in top_products %}
+			<div class="col-md-6 col-lg-3">
+				<div class="product">
+					<img class="img-fluid" src="{{{product.thumb}}}" alt="Product Image" />
+					<div class="text-center">
+						<h3 style="font-size: 18px; color: #2E2E2E; margin-top: 10px;">{{{product.name}}}</h3>
+						<p class="price" style="color: #82ae46; font-size: 16px; margin-top: 0px;">
+							<span class="price-sale">{{{product.price}}} грн</span>
+						</p>
+						<div class="m-auto d-flex addProductButton" product="{{{product|json}}}" style="justify-content: flex-end;">
+							<a href="/checkout" class="buy-now d-flex justify-content-center align-items-center"
+							   style="border-radius: 50%; width: 42px; height: 42px; background-color: #82ae46; padding: 12px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; margin-right: 20px;">
+								<span><i class="ion-ios-cart" style="color: #FFFFFF; font-size: 24px;"></i></span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			{% endfor %}
 		</div>
