@@ -79,20 +79,24 @@
 		background-color: #6a983c;
 		border-color: #6a983c;
 	}
-	.height-product{
+
+	.height-product {
 		display: flex;
 	}
-	.product{
+
+	.product {
 		display: flex;
 		flex-flow: column wrap;
 		text-align: center;
 	}
-	.product__btn{
+
+	.product__btn {
 		margin-top: auto;
 		justify-content: center;
 	}
+
 	@media screen and (max-width: 1199px) {
-		.product__btn{
+		.product__btn {
 			margin-top: auto;
 			justify-content: end;
 			margin-right: 25px;
@@ -143,7 +147,8 @@
 	<div class="overlay"></div>
 	<div class="hero-content container">
 		<h1 class="mb-2 text-white" id="hero-title">POD HUB | Vape Shop твого міста💚💜</h1>
-		<h2 class="subheading mb-4 text-white" id="hero-text">POD системи, комплектуючі, рідини, та щомісячні розіграші серед клієнтів.</h2>
+		<h2 class="subheading mb-4 text-white" id="hero-text">POD системи, комплектуючі, рідини, та щомісячні розіграші
+			серед клієнтів.</h2>
 	</div>
 </section>
 
@@ -260,16 +265,16 @@
 			<div class="col-md-6 col-lg-3 height-product">
 				<div class="product">
 					<img class="img-fluid" src="{{{product.thumb}}}" alt="Product Image" />
-						<h3 style="font-size: 18px; color: #2E2E2E; margin-top: 10px;">{{{product.name}}}</h3>
-						<p class="price" style="color: #82ae46; font-size: 16px; margin-top: 0px;">
-							<span class="price-sale">{{{product.price}}} грн</span>
-						</p>
-						<div class="product__btn d-flex addProductButton" product="{{{product|json}}}">
-							<a href="/checkout" class="buy-now d-flex align-items-center"
-							   style="border-radius: 50%; width: 42px; height: 42px; background-color: #82ae46; padding: 12px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-								<span><i class="ion-ios-cart" style="color: #FFFFFF; font-size: 24px;"></i></span>
-							</a>
-						</div>
+					<h3 style="font-size: 18px; color: #2E2E2E; margin-top: 10px;">{{{product.name}}}</h3>
+					<p class="price" style="color: #82ae46; font-size: 16px; margin-top: 0px;">
+						<span class="price-sale">{{{product.price}}} грн</span>
+					</p>
+					<div class="product__btn d-flex addProductButton" product="{{{product|json}}}">
+						<a href="/checkout" class="buy-now d-flex align-items-center"
+							style="border-radius: 50%; width: 42px; height: 42px; background-color: #82ae46; padding: 12px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+							<span><i class="ion-ios-cart" style="color: #FFFFFF; font-size: 24px;"></i></span>
+						</a>
+					</div>
 				</div>
 			</div>
 			{% endfor %}
