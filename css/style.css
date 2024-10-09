@@ -11886,16 +11886,24 @@ h5,
   .height-product {
     display: flex;
   }
+
+  .product__info {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+  }
 }
 
 .product__btn {
   margin: 0 30px 0 auto;
 }
 
-.product__info {
-  display: flex;
-  align-items: center;
-  margin-top: auto;
+@media (max-width: 991.98px) {
+  .product__info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 1199px) {
