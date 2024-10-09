@@ -45,20 +45,6 @@
 	window.addEventListener("resize", changeView); // Recalculate on resize
 </script>
 
-<style>
-	#home-section {
-		background-image: url("img/bull.jpg");
-		/* Default background for desktop */
-	}
-
-	@media (max-width: 768px) {
-		#home-section {
-			background-image: url("img/bull-mobile.jpg") !important;
-			/* Override background for mobile */
-		}
-	}
-</style>
-
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center mb-3 pb-3">
@@ -68,6 +54,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- <div class="container">
 		<div class="row">
 			{% for product in top_products %}
@@ -97,7 +84,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="mobile-cart">
 						<div class="m-auto d-flex addProductButton" product="{{{product|json}}}">
 							<a href="/checkout" class="buy-now d-flex justify-content-center align-items-center">
@@ -105,15 +91,12 @@
 							</a>
 						</div>
 					</div>
-
 				</div>
-
-
-
 			</div>
 			{% endfor %}
 		</div>
-	</div> -->
+	</div>-->
+
 	<div class="container">
 		<div class="row">
 			{% for product in top_products %}
