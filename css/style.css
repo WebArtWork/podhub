@@ -11882,19 +11882,20 @@ h5,
   border-color: #6a983c;
 }
 
-.height-product {
-  display: flex;
-}
-
-.product {
-  display: flex;
-  flex-flow: column wrap;
-  text-align: center;
+@media (min-width: 991.98px) {
+  .height-product {
+    display: flex;
+  }
 }
 
 .product__btn {
+  margin: 0 30px 0 auto;
+}
+
+.product__info {
+  display: flex;
+  align-items: center;
   margin-top: auto;
-  justify-content: center;
 }
 
 @media screen and (max-width: 1199px) {
@@ -11903,6 +11904,18 @@ h5,
     justify-content: end;
     margin-right: 25px;
   }
+}
+
+.buy-now {
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  background-color: #82ae46;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .hero-wrap {
@@ -12481,6 +12494,13 @@ h5,
   color: #82ae46;
 }
 
+.price {
+  color: #82ae46;
+  font-size: 16px;
+  margin-top: 0px;
+  margin-left: 30px;
+}
+
 .deal-of-the-day .price {
   font-weight: 500;
   font-size: 18px;
@@ -12547,22 +12567,39 @@ h5,
   position: relative;
 }
 
-.product {
-  display: block;
-  width: 100%;
-  margin-bottom: 30px;
-  position: relative;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  border: 1px solid #f0f0f0;
+@media (min-width: 991.98px) {
+  .product {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    height: 100%;
+    /* display: block; */
+    width: 100%;
+    /* margin-bottom: 30px; */
+    position: relative;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+  }
 }
 
 @media (max-width: 991.98px) {
   .product {
+    display: block;
+    flex-flow: column wrap;
+    text-align: center;
+    width: 100%;
     margin-bottom: 30px;
+    position: relative;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
   }
 }
 

@@ -104,14 +104,15 @@
 				<div class="product">
 					<img class="img-fluid" src="{{{product.thumb}}}" alt="Product Image" />
 					<h3 style="font-size: 18px; color: #2E2E2E; margin-top: 10px;">{{{product.name}}}</h3>
-					<p class="price" style="color: #82ae46; font-size: 16px; margin-top: 0px;">
-						<span class="price-sale">{{{product.price}}} грн</span>
-					</p>
-					<div class="product__btn d-flex addProductButton" product="{{{product|json}}}">
-						<a href="/checkout" class="buy-now d-flex align-items-center"
-							style="border-radius: 50%; width: 42px; height: 42px; background-color: #82ae46; padding: 12px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-							<span><i class="ion-ios-cart" style="color: #FFFFFF; font-size: 24px;"></i></span>
-						</a>
+					<div class="product__info">
+						<p class="price">
+							<span class="price-sale">{{{product.price}}} грн</span>
+						</p>
+						<div class="product__btn d-flex addProductButton" product="{{{product|json}}}">
+							<a href="/checkout" class="buy-now d-flex align-items-center">
+								<span><i class="ion-ios-cart" style="color: #FFFFFF; font-size: 24px;"></i></span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
