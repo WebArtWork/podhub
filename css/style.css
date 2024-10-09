@@ -384,14 +384,30 @@ h6,
   color: inherit;
 }
 
-h1,
-.h1 {
-  font-size: 2.5rem;
+@media (min-width: 768px) {
+
+  h1,
+  .h1 {
+    font-size: 2.5rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 2rem;
+  }
 }
 
-h2,
-.h2 {
-  font-size: 2rem;
+@media (max-width: 768px) {
+
+  h1,
+  .h1 {
+    font-size: 2rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 1.5rem;
+  }
 }
 
 h3,
@@ -13255,7 +13271,7 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 14px;
-  padding: 7em 0;
+  padding: 5em 0 3em 0;
   color: #000000;
 }
 
