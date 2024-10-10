@@ -13998,6 +13998,9 @@ textarea.form-control {
 .block-23 ul li .icon {
   margin-right: 15px;
   display: block;
+  width: 20px;
+  height: 20px;
+  align-items: center;
 }
 
 .block-17 {
