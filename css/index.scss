@@ -1,5 +1,98 @@
 /* Приховати веб-кнопку кошика у мобільній версії */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+  }
+  
+  /* Показываем затемняющий блок */
+  .overlay.active {
+    display: block;
+  }
+  
+  /* Кнопка закрытия */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+.products-burger {
+    display: none;
+    width: 34px;
+    height: 23px;
+    position: absolute;
+}
+
+.burger-side {
+    height: 3px;
+    width: 100%;
+    background-color: rgb(49, 47, 47);
+    transition: all .3s;
+}
+
+.burger-side::before,
+.burger-side::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    display: block;
+    background-color: rgb(49, 47, 47);
+    transition: all .3s;
+    position: absolute;
+    left: 0;
+}
+
+.burger-side::before {
+    top: 0;
+}
+
+.burger-side:after {
+    bottom: 0;
+}
 /*  burger  */
+.burger-wrap {
+    display: none;
+    width: 34px;
+    height: 23px;
+    position: relative;
+}
+
+.burger {
+    height: 3px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    transition: all .3s;
+}
+
+.burger::before,
+.burger::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    transition: all .3s;
+    position: absolute;
+    left: 0;
+}
+
+.burger::before {
+    top: 0;
+}
+
+.burger:after {
+    bottom: 0;
+}
 ul{
     padding: 0;
 }
@@ -578,3 +671,76 @@ ul{
     display: block; /* Відкриває підменю */
 }
 
+@media (max-width: 1199px) {
+    .products-sidebar {
+        flex: 0 0 210px;
+        max-width: 210px;
+        height: fit-content;
+    }
+    .products-sidebar__content {
+        padding: 10px;
+    }
+    .menu-item {
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .accordion .arrow svg{
+        width: 20px;
+        height: 20px;
+    }
+    .accordion {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .panel {
+        padding: 0 8px;
+        font-size: 14px;
+    }
+    .price-filter h2 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+@media (max-width: 767px) {
+    .products-sidebar{
+        opacity: 0;
+        position: absolute;
+        width: 0;
+        transition: all .3s;
+        z-index: -3;
+        &--open{
+            opacity: 1;
+            width: 100%;
+            z-index: 1001;
+        }
+    }
+    .product-category{
+        display: flex;
+        justify-content: end;
+    }
+    .products-main{
+        padding: 0;
+    }
+    .products-burger {
+        display: flex;
+        align-items: center;
+        z-index: 3;
+    }
+    .burger-side::before, .burger-side::after {
+        width: 85%;
+    }
+}
+
+@media (max-width: 479px) {
+    .product-category{
+        display: none;
+    }
+    .products-wrapper {
+        padding: 40px 10px 30px 10px;
+        position: relative;
+    }
+    .products-burger{
+        top: 8px;
+    }
+}

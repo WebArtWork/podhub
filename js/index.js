@@ -92,3 +92,27 @@ const priceRangeMin = document.getElementById('priceRangeMin');
 
 
         ////////////
+        document.addEventListener('DOMContentLoaded', function () {
+            const burger = document.querySelector('.products-burger');
+            const sidebar = document.querySelector('.products-sidebar');
+            const overlay = document.querySelector('.overlay');
+            const closeBtn = document.querySelector('.close-btn');
+          
+            // Открываем сайдбар и затемняющий блок
+            burger.addEventListener('click', function () {
+              sidebar.classList.add('products-sidebar--open');
+              overlay.classList.add('active');
+            });
+          
+            // Закрываем сайдбар и затемняющий блок при клике на крестик
+            closeBtn.addEventListener('click', function () {
+              sidebar.classList.remove('products-sidebar--open');
+              overlay.classList.remove('active');
+            });
+          
+            // Закрываем сайдбар и затемняющий блок при клике на затемняющий блок
+            overlay.addEventListener('click', function () {
+              sidebar.classList.remove('products-sidebar--open');
+              overlay.classList.remove('active');
+            });
+          });

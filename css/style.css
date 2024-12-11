@@ -12506,7 +12506,6 @@ h5,
   color: #82ae46;
   font-size: 16px;
   margin-top: 0px;
-  margin-left: 30px;
 }
 
 .deal-of-the-day .price {
@@ -13345,6 +13344,7 @@ textarea.form-control {
 .goto-here {
   width: 100%;
   display: block;
+  overflow-x: hidden;
 }
 
 .about-author .desc h3 {
