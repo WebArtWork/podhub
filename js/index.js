@@ -1,3 +1,7 @@
+document.querySelector(".burger-wrap").addEventListener("click", () => {
+    document.querySelector(".header__navigation").classList.toggle("header__navigation--open");
+    document.querySelector(".burger").classList.toggle("burger--close");
+});
  // Отримуємо елементи меню
  const menuLiquids = document.getElementById('menuLiquids');
  const submenuLiquids = document.getElementById('submenuLiquids');
@@ -23,10 +27,7 @@
  menuDevices.addEventListener('click', function() {
      toggleMenu(menuDevices, submenuDevices);
  });
-document.querySelector(".burger-wrap").addEventListener("click", () => {
-    document.querySelector(".header__navigation").classList.toggle("header__navigation--open");
-    document.querySelector(".burger").classList.toggle("burger--close");
-});
+
 var acc = document.getElementsByClassName("accordion");
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
@@ -102,17 +103,20 @@ const priceRangeMin = document.getElementById('priceRangeMin');
             burger.addEventListener('click', function () {
               sidebar.classList.add('products-sidebar--open');
               overlay.classList.add('active');
+              document.body.style.overflowY = 'hidden'; // Блокируем скроллинг
             });
           
             // Закрываем сайдбар и затемняющий блок при клике на крестик
             closeBtn.addEventListener('click', function () {
               sidebar.classList.remove('products-sidebar--open');
               overlay.classList.remove('active');
+              document.body.style.overflowY = ''; // Возвращаем скроллинг
             });
           
             // Закрываем сайдбар и затемняющий блок при клике на затемняющий блок
             overlay.addEventListener('click', function () {
               sidebar.classList.remove('products-sidebar--open');
               overlay.classList.remove('active');
+              document.body.style.overflowY = ''; // Возвращаем скроллинг
             });
           });

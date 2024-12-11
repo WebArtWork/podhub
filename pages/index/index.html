@@ -5,39 +5,42 @@
 			серед клієнтів.</h1>
 		<h2 class="subheading mb-4 text-white" id="hero-text">Оффлайн магазини з можливістю доставки по місту та
 			доставка по Україні.</h2>
+
 	</div>
 </section>
 
 <script>
 	let view = true;
 
-	function changeView() {
-		const heroSection = document.getElementById("home-section");
-		const heroTitle = document.getElementById("hero-title");
-		const heroText = document.getElementById("hero-text");
+	function insertImage() {
+    const heroText = document.getElementById("hero-text");
 
-		if (window.innerWidth > 768) {
-			// If the viewport width is greater than 768px (desktop)
-			if (view) {
-				heroSection.style.backgroundImage = "url('img/6.jpg')";
-				heroTitle.textContent = "POD системи, комплектуючі, рідини, та щомісячні розіграші серед клієнтів.";
-				heroText.innerHTML =
-					"Оффлайн магазини з можливістю доставки по місту та доставка по Україні.";
-			} else {
-				heroSection.style.backgroundImage = "url('img/6.jpg')";
-				heroTitle.textContent = "POD системи, комплектуючі, рідини, та щомісячні розіграші серед клієнтів.";
-				heroText.innerHTML =
-					"Оффлайн магазини з можливістю доставки по місту та доставка по Україні.";
-			}
-			view = !view;
-		} else {
-			// If the viewport width is less than or equal to 768px (mobile)
-			heroSection.style.backgroundImage = "url('img/bull-mobile.jpg')";
-			heroTitle.textContent = "POD системи, комплектуючі, рідини, та щомісячні розіграші серед клієнтів.";
-			heroText.innerHTML =
-				"Оффлайн магазини з можливістю доставки по місту та доставка по Україні.";
-		}
-	}
+    const img = document.createElement("img");
+    img.src = "img/beef.svg";
+    img.alt = "";
+    img.style.width = "300px";
+    img.style.marginBottom = "10px";
+
+    heroText.prepend(img); // Вставляємо зображення на початку
+}
+	function changeView() {
+    const heroSection = document.getElementById("home-section");
+    const heroTitle = document.getElementById("hero-title");
+    const heroText = document.getElementById("hero-text");
+
+    // Оновлюємо фонові зображення залежно від ширини екрану
+    if (window.innerWidth > 768) {
+        heroSection.style.backgroundImage = "url('img/bg.jpg')";
+        heroText.innerHTML = ""; // Очищаємо текст
+        insertImage(); // Додаємо зображення
+        heroTitle.textContent = "POD системи, комплектуючі, рідини, та щомісячні розіграші серед клієнтів.";
+    } else {
+        heroSection.style.backgroundImage = "url('img/mobile.png')";
+        heroText.innerHTML = ""; // Очищаємо текст
+        insertImage(); // Додаємо зображення
+        heroTitle.textContent = "POD системи, комплектуючі, рідини, та щомісячні розіграші серед клієнтів.";
+    }
+}
 
 	setInterval(changeView, 5000); // Change view every 5 seconds
 
