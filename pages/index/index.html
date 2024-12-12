@@ -472,7 +472,7 @@
 	</div>
 </div>
 <script type="module">
-	import Dom from "/api/wjst/dom";
+	import Dom from "https://webart.work/api/wjst/dom";
 
 	const fetchProducts = async () => {
 		try {
@@ -501,9 +501,7 @@
 			console.warn('No products found for the specified commerce.');
 			return;
 		}
-
 		const limitedProducts = filteredProducts.slice(0, 8);
-
 		limitedProducts.forEach((product, index) => {
 			Dom.add('products', Dom.template('products', {
 				name: product.name || 'No name',
