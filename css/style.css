@@ -11889,11 +11889,6 @@ h5,
     display: flex;
   }
 
-  .product__info {
-    display: flex;
-    align-items: center;
-    margin-top: auto;
-  }
 }
 
 .product__btn {

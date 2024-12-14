@@ -23,11 +23,12 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: white;
+    background: rgba(255, 255, 255, 0);
     border: none;
-    font-size: 16px;
+    font-size: 24px;
     cursor: pointer;
     z-index: 1001;
+    color: #d93c49;
   }
 .products-burger {
     display: none;
@@ -476,7 +477,14 @@ ul{
         margin-bottom: 5px;
     }
 }
-
+.product__info {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+  }
+  .product__info .price{
+    margin-left: 20px;
+  }
 .panel {
     padding: 0 18px;
     background-color: white;
@@ -713,14 +721,16 @@ ul{
         transition: all .3s;
         z-index: -3;
         &--open{
-        opacity: 1;
-        width: 100%;
-        z-index: 1001;
-        position: fixed;
-        top: 0;
-        height: 100vh;
-        overflow-y: scroll;
-        padding: 10px;
+            opacity: 1;
+            width: 100%;
+            z-index: 1001;
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            overflow-y: scroll;
+            padding: 10px;
+            left: -1px;
+            border-radius: 0 20px 20px 0;
         }
     }
     .product-category{
