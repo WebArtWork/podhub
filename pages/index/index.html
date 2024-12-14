@@ -453,7 +453,7 @@
 </section>
 
 <div id="template-products" style="display: none;">
-
+	<a href="/product-single/{id}">
 	<div class="col-md-6 col-lg-3 height-product">
 		<div class="product">
 			<img class="img-fluid" src="{thumb}" alt="Product Image" />
@@ -470,6 +470,7 @@
 			</div>
 		</div>
 	</div>
+</a>
 </div>
 <script type="module">
 	import Dom from "https://webart.work/api/wjst/dom";
@@ -501,7 +502,7 @@
 			console.warn('No products found for the specified commerce.');
 			return;
 		}
-		const limitedProducts = filteredProducts.slice(0, 8);
+		const limitedProducts = filteredProducts.slice(0, 4);
 		limitedProducts.forEach((product, index) => {
 			Dom.add('products', Dom.template('products', {
 				name: product.name || 'No name',
