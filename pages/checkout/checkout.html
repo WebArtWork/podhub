@@ -1,11 +1,6 @@
-<div
-	class="hero-wrap hero-bread"
-	style="background-image: url('img/smoke.jpg')"
->
+<div class="hero-wrap hero-bread" style="background-image: url('img/smoke.jpg')">
 	<div class="container">
-		<div
-			class="row no-gutters slider-text align-items-center justify-content-center"
-		>
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
 			<div class="col-md-9 ftco-animate text-center">
 				<!-- <p class="breadcrumbs">
 					<span class="mr-2"><a href="index.html">Home</a></span>
@@ -48,73 +43,39 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="firstname">Ім'я</label>
-								<input
-									type="text"
-									class="form-control"
-									id="firstname"
-									required
-								/>
+								<input type="text" class="form-control" id="firstname" required />
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="lastname">Прізвище</label>
-								<input
-									type="text"
-									class="form-control"
-									id="lastname"
-									required
-								/>
+								<input type="text" class="form-control" id="lastname" required />
 							</div>
 						</div>
 						<div class="w-100"></div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="towncity">Населений пункт</label>
-								<input
-									type="text"
-									class="form-control"
-									id="towncity"
-									required
-								/>
+								<input type="text" class="form-control" id="towncity" required />
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="postcodezip"
-									>Номер Нової пошти</label
-								>
-								<input
-									type="text"
-									class="form-control"
-									id="postcodezip"
-									required
-								/>
+								<label for="postcodezip">Номер Нової пошти</label>
+								<input type="text" class="form-control" id="postcodezip" required />
 							</div>
 						</div>
 						<div class="w-100"></div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="phone">Телефон</label>
-								<input
-									type="text"
-									class="form-control"
-									id="phone"
-									required
-								/>
+								<input type="text" class="form-control" id="phone" required />
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="emailaddress"
-									>Електорнна адреса</label
-								>
-								<input
-									type="email"
-									class="form-control"
-									id="emailaddress"
-									required
-								/>
+								<label for="emailaddress">Електорнна адреса</label>
+								<input type="email" class="form-control" id="emailaddress" required />
 							</div>
 						</div>
 					</div>
@@ -166,7 +127,7 @@
 	const total = (order) => {
 		return (
 			order.products.reduce((total, item) => {
-				return total + item.price * item.quantity;
+				return total + item.data.price * item.quantity;
 			}, 0) + " грн"
 		);
 	};
@@ -177,51 +138,48 @@
 
 		order.products.forEach((product) => {
 			const row = document.createElement("tr");
-			row.id = "productId" + product.id;
+			row.id = "productId" + product.data._id;
 			row.className = "text-center";
 
 			row.innerHTML = `
 	           <td class="image-prod">
-	               <div class="img" style="background-image: url(${
-						product.thumb
-					});"></div>
+	               <div class="img" style="background-image: url(${product.data.thumb
+				});"></div>
 	           </td>
 	           <td class="product-name">
-	               <h3>${product.name}</h3>
+	               <h3>${product.data.name}</h3>
 	           </td>
-	           <td class="price">${product.price.toFixed(2)} грн</td>
+	           <td class="price">${product.data.price.toFixed(2)} грн</td>
 	           <td class="quantity">
 	               <div class="input-group mb-3">
-	                   <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${
-							product.quantity
-						}" min="1" max="100" product='${JSON.stringify(
-				product
-			)}' />
+	                   <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${product.quantity
+				}" min="1" max="100" product='${JSON.stringify(
+					product
+				)}' />
 	               </div>
 	           </td>
-	           <td class="total" id="total${product.id}">${(
-				product.price * product.quantity
-			).toFixed(2)} грн</td>
+	           <td class="total" id="total${product.data._id}">${(
+					product.data.price * product.quantity
+				).toFixed(2)} грн</td>
 	           <td class="product-remove">
 	               <div class="input-group mb-3">
-	                   <input type="string" name="comment" class="quantity form-control changeComment" value="${
-							product.comment || ""
-						}" product='${JSON.stringify(
-				product
-			)}' placeholder='' />
+	                   <input type="string" name="comment" class="quantity form-control changeComment" value="${product.comment || ""
+				}" product='${JSON.stringify(
+					product
+				)}' placeholder='' />
 	               </div>
 	           </td>
 	           <td class="product-remove">
 	               <span class="ion-ios-close removeProduct" product='${JSON.stringify(
-						product
-					)}'></span>
+					product
+				)}'></span>
 	           </td>
 	       `;
 			tableBody.appendChild(row);
 		});
 		document.getElementById("allTotal").innerHTML =
 			order.products.reduce((total, item) => {
-				return total + item.price * item.quantity;
+				return total + item.data.price * item.quantity;
 			}, 0) + " грн";
 
 		let buttons = document.querySelectorAll(".removeProduct");
@@ -229,10 +187,10 @@
 			return () => {
 				const product = JSON.parse(button.getAttribute("product"));
 				order.products = order.products.filter(
-					(p) => p.id !== product.id
+					(p) => p.id !== product.data._id
 				);
 				saveOrder(order);
-				let row = document.getElementById(`productId${product.id}`);
+				let row = document.getElementById(`productId${product.data._id}`);
 				if (row) {
 					row.remove();
 				}
@@ -247,12 +205,12 @@
 			return () => {
 				const product = JSON.parse(input.getAttribute("product"));
 				const getProduct = order.products.find(
-					(p) => p.id === product.id
+					(p) => p.data._id === product.data._id
 				);
 				getProduct.quantity = Number(input.value);
 				saveOrder(order);
-				document.getElementById("total" + product.id).innerHTML =
-					(product.price * Number(input.value)).toFixed(2) + " грн";
+				document.getElementById("total" + product.data._id).innerHTML =
+					(product.data.price * Number(input.value)).toFixed(2) + " грн";
 				document.getElementById("allTotal").innerHTML = total(order);
 			};
 		};
@@ -265,7 +223,7 @@
 			return () => {
 				const product = JSON.parse(input.getAttribute("product"));
 				const getProduct = order.products.find(
-					(p) => p.id === product.id
+					(p) => p, data._id === product.data._id
 				);
 				getProduct.comment = input.value;
 				saveOrder(order);
@@ -290,7 +248,7 @@
 		const order = loadOrder();
 		let text = "===================\n";
 		for (const product of order.products) {
-			text += `Товар: ${product.name}\nЦіна: ${product.price} грн\nКількість: ${product.quantity}\nКоммент: ${product.comment}\n===================\n`;
+			text += `Товар: ${product.data.name}\nЦіна: ${product.data.price} грн\nКількість: ${product.quantity}\nКоммент: ${product.comment}\n===================\n`;
 		}
 		text += `Все разом: ${total(order)}\n`;
 		return text;
@@ -321,12 +279,25 @@
 				phone &&
 				emailaddress
 			) {
+				const order = loadOrder();
 				const data = {
-					chatid: -4280773078,
-					message: `Замовлення ${id()}\n${productsText()}Ім'я: ${firstname}\nПрізвище: ${lastname}\nНаселений пункт: ${towncity}\nНомер Нової пошти: ${postcodezip}\nТелефон: ${phone}\nЕлекторнна адреса: ${emailaddress}`,
+					products: order.products.map((product) => ({
+						product: product.data._id,
+						productquantity: product.data.productquantity || null,
+						quantity: product.quantity,
+					})),
+					commerce: "674d9cbe7f4e98c4f2482a20",
+					delivery: {
+						firstname,
+						lastname,
+						city: towncity,
+						postoffice: postcodezip,
+						phone,
+						email: emailaddress,
+					},
 				};
 
-				fetch("https://webart.work/api/bot/message", {
+				fetch("https://webart.work/api/commerce/order/create", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

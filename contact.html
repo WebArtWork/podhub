@@ -510,7 +510,8 @@
 												<path
 													d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
 												<path d="M0 0h48v48h-48z" fill="none" />
-											</svg></span><span class="text">вулиця Святого Миколая, Бар, Вінницька область, 23000</span></a>
+											</svg></span><span class="text">вулиця Святого Миколая, Бар, Вінницька
+											область, 23000</span></a>
 								</li>
 								<li>
 									<a href="https://maps.app.goo.gl/JK6ERQRKBdUrknueA"><span class="icon"><svg
@@ -561,7 +562,7 @@
 												<path d="M0 0h48v48h-48z" fill="none" />
 											</svg></span><span class="text">вулиця Європейська, 29, Умань, Черкаська
 											область, 20300</span></a>
-								</li>		
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -592,6 +593,28 @@
 				stroke="#F96D00" />
 		</svg>
 	</div>
+
+	<script>
+		const cartCounter = document.getElementById("cartCounter");
+
+		const updateCartCounter = () => {
+			const order = JSON.parse(localStorage.getItem("order")) || { products: [] };
+			const productCount = order.products.length;
+			if (cartCounter) {
+				cartCounter.textContent = productCount;
+			} else {
+				console.error("Cart counter element not found.");
+			}
+		};
+
+		updateCartCounter();
+
+		window.addEventListener("storage", (event) => {
+			if (event.key === "order") {
+				updateCartCounter();
+			}
+		});
+	</script>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
