@@ -682,6 +682,58 @@ ul{
     display: block; /* Відкриває підменю */
 }
 
+.product-country{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    &-title{
+        display: flex;
+        align-items: center;
+        &__icon{
+            display: flex;
+            svg{
+                fill:#82ae46;
+                width: 20px;
+                height: 20px;
+            }
+        }
+        &__text{
+            margin: 0 5px 0 10px;
+            color: #645c5c;
+            font-weight: 600;
+        }
+    }
+    p{
+        margin: 0;
+    }
+}
+
+.price-product{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #131212;
+    &-title{
+        display: flex;
+        align-items: center;
+        &__icon{
+            display: flex;
+        }
+        &__text{
+            margin: 0 5px 0 10px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+    }
+    p{
+        margin: 0;
+        font-size: 30px;
+    }
+}
+
 @media (max-width: 1199px) {
     .products-sidebar {
         flex: 0 0 210px;
