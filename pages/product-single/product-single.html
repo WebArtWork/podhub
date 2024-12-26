@@ -20,13 +20,14 @@
 </section>
 
 <div id="template-product" style="display: none;">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <a href="{thumb}" class="image-popup">
             <img src="{thumb}" class="img-fluid" alt="Product photo"></a>
+            <div class="tastes">{quantities}</div>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">{quantities}</div>
+
     
-    <div class="col-lg-12">
+    <div class="col-lg-6">
         <h3>{name}</h3>
         <div class="rating d-flex">
             <p class="text-left mr-4">
@@ -78,6 +79,7 @@
                 </div>
                 <p>{price}грн</p>
             </div>
+            <p>{description}</p>
             <div class="product-country">
                 <div class="product-country-title">
                     <div class="product-country-title__icon">
@@ -178,11 +180,13 @@
                     <p style="color: #000;">600 kg available</p>
                 </div>
             </div>
-            <button id="addToCart">Додати до кошика</button>
-            <button id="buyNow">Купити зараз</button>
+            <div class="products-btns">
+                <button id="addToCart" class="products-btn">Додати до кошика</button>
+                <button id="buyNow" class="products-btn">Купити зараз</button>
+            </div>
         </div>
     </div>
-    <p>{description}</p>
+
 </div>
 
 <script type="module">
@@ -251,11 +255,13 @@
 
             const quantitiesHTML = product.quantity.map(qty => `
         <div class="card">
-            <img src="${qty.thumb || ''}" alt="${qty.name || 'Невідомо'}">
+            <div class="card-content">
+                <img src="${qty.thumb || ''}" alt="${qty.name || 'Невідомо'}">
             <div>
-                <p>${qty.name || 'Невідомо'}</p>
+                <p class="card-title">${qty.name || 'Невідомо'}</p>
                 <p>${qty.code || ''}</p>
-                <p>Кількість: ${qty.quantity || 0}</p>
+                <p class="card-count">Кількість: ${qty.quantity || 0}</p>
+            </div>
             </div>
         </div>
 

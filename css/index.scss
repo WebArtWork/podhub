@@ -243,6 +243,59 @@ ul{
     
 }
 
+.tastes{
+    display: flex;
+    flex-flow: row wrap;
+    .card{
+        flex: 0 0 20%;
+        border: none;
+        padding: 2px;
+        display: flex;
+        p{
+            margin: 0;
+        }
+        &-title{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        &-count{
+            text-align: center;
+        }
+        &-content{
+            border-radius: 5px;
+            border: 1px solid #82ae462e;
+            height: 100%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.products{
+    &-btns{
+        display: flex;
+    }
+    &-btn{
+        background-color: #82ae46;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        max-width: 200px;
+        width: 100%;
+        border-radius: 120px;
+        height: 50px;
+        margin-right: 20px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
 @media (min-width: 768px) {
     .about-us{
         .container{
