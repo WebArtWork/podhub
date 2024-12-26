@@ -20,10 +20,13 @@
 </section>
 
 <div id="template-product" style="display: none;">
-    <div class="col-lg-6 mb-5 ftco-animate">
-        <a href="{thumb}" class="image-popup"><img src="{thumb}" class="img-fluid" alt="Product photo"></a>
+    <div class="col-md-12">
+        <a href="{thumb}" class="image-popup">
+            <img src="{thumb}" class="img-fluid" alt="Product photo"></a>
     </div>
-    <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    <div class="row row-cols-1 row-cols-md-3 g-4">{quantities}</div>
+    
+    <div class="col-lg-12">
         <h3>{name}</h3>
         <div class="rating d-flex">
             <p class="text-left mr-4">
@@ -42,18 +45,6 @@
             </p>
         </div>
         <div>
-            <div class="card-group" id="quantity">
-                <div id="template-quantity" style="display: none;">
-                    <div class="card" style="width: 9rem;">
-                        <img src="{thumb}" alt="{qtyname}">
-                        <div class="card-body">
-                            <p class="card-title">{qtyname}</p>
-                            <p class="card-title">{code}</p>
-                            <p class="card-text">Кількість: {quantity}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="price-product">
                 <div class="price-product-title">
                     <div class="price-product-title__icon">
@@ -257,16 +248,21 @@
                 console.warn('No product found.');
                 return;
             }
-            const quantitiesHTML = product.quantity.map(qty => {
-                return Dom.add('product', Dom.template('quantity', {
-                    qtyname: qty.name || 'Невідомо',
-                    quantity: qty.quantity || 0,
-                    thumb: qty.thumb || '',
-                    code: qty.code || ''
-                }));
-            }).join('');
 
-            Dom.add('product', Dom.template('product', {
+            const quantitiesHTML = product.quantity.map(qty => `
+        <div class="card">
+            <img src="${qty.thumb || ''}" alt="${qty.name || 'Невідомо'}">
+            <div>
+                <p>${qty.name || 'Невідомо'}</p>
+                <p>${qty.code || ''}</p>
+                <p>Кількість: ${qty.quantity || 0}</p>
+            </div>
+        </div>
+
+
+    `).join('');
+
+            const productHTML = Dom.template('product', {
                 name: product.product.name || 'No name',
                 description: product.product.description || '',
                 price: product.product.price || 0,
@@ -278,8 +274,11 @@
                 thumbs: product.product.thumbs || '',
                 id: product.product._id || 'No ID',
                 quantities: quantitiesHTML
-            }));
+            });
+
+            Dom.add('product', productHTML);
         };
+
         const operateQuantity = (plus) => {
             const quantityInput = Dom.element('quantity');
             let currentValue = parseInt(quantityInput.value, 10);
