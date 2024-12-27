@@ -296,13 +296,14 @@ ul{
     cursor: pointer;
     font-size: 14px;
     border-radius: 120px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
 .products{
     &-btns{
         display: flex;
+        padding: 20px 0;
     }
     &-btn{
         background-color: #82ae46;
