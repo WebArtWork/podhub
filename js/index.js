@@ -1,3 +1,15 @@
+const toggleButton = document.querySelector('.tugle');
+const descriptionText = document.querySelector('.description-text');
+
+toggleButton.addEventListener('click', () => {
+    descriptionText.classList.toggle('expanded');
+    if (descriptionText.classList.contains('expanded')) {
+        toggleButton.textContent = 'Показати менше';
+    } else {
+        toggleButton.textContent = 'Показати більше';
+    }
+});
+
 document.querySelector(".burger-wrap").addEventListener("click", () => {
     document.querySelector(".header__navigation").classList.toggle("header__navigation--open");
     document.querySelector(".burger").classList.toggle("burger--close");
@@ -120,3 +132,4 @@ const priceRangeMin = document.getElementById('priceRangeMin');
               document.body.style.overflowY = ''; // Возвращаем скроллинг
             });
           });
+          

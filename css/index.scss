@@ -268,11 +268,37 @@ ul{
             border: 1px solid #82ae462e;
             height: 100%;
             img{
-                width: 100%;
+                width: 50px;
+                max-width: 100%;
             }
         }
     }
 }
+
+.description-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Лімітує кількість рядків до 4 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Додає три крапки в кінці, якщо текст обривається */
+}
+
+.description-text.expanded {
+    -webkit-line-clamp: unset; /* Знімає ліміт для кількості рядків */
+    overflow: visible; /* Зробить текст видимим */
+}
+
+.tugle {
+    background-color: #82ae46;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 120px;
+    margin-top: 10px;
+}
+
 
 .products{
     &-btns{
