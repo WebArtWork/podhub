@@ -13,11 +13,9 @@
 <div class="products-wrapper">
     <div class="products-sidebar">
         <div class="products-sidebar__content">
-            <div class="products-sidebar__item">
-                <div class="products-sidebar__title">
+            <!-- <div class="products-sidebar__item">
 
-                </div>
-                <div class="sidebar">
+                 <div class="sidebar">
                     <div class="menu-item" id="menuLiquids">
                         Рідини
                         <span class="toggle-arrow">▼</span>
@@ -37,10 +35,10 @@
                     </ul>
 
                 </div>
-            </div>
+            </div> -->
             <div class="products-sidebar__item">
                 <div class="products-sidebar__title products-sidebar__title--padding">
-                    Тайтл для меню
+                    Категорії
                 </div>
                 <div class="accordion-container" id="alltag">
                 </div>
@@ -68,29 +66,6 @@
                         <div class="slider-range" id="sliderRange"></div>
                     </div>
                 </div>
-            </div>
-            <div class="products-sidebar__item">
-                <div class="products-sidebar__title products-sidebar__title--padding">
-                    Виробники
-                </div>
-                <ul class="checkbox-list">
-                    <li class="checkbox-item">
-                        <input type="checkbox" id="checkbox1">
-                        <label for="checkbox1">Чекбокс 1</label>
-                    </li>
-                    <li class="checkbox-item">
-                        <input type="checkbox" id="checkbox2">
-                        <label for="checkbox2">Чекбокс 2</label>
-                    </li>
-                    <li class="checkbox-item">
-                        <input type="checkbox" id="checkbox3">
-                        <label for="checkbox3">Чекбокс 3</label>
-                    </li>
-                    <li class="checkbox-item">
-                        <input type="checkbox" id="checkbox4">
-                        <label for="checkbox4">Чекбокс 4</label>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
@@ -219,33 +194,59 @@
                 }
                 const children = tags.filter(tag => tag.parent);
 
-                const tagsHTML = children.map(child => `
-                     <div class="card">
-                        <p>${child.name || 'Невідомо'}</p>
-                     </div>
-                `).join('');
-                console.log(tagsHTML);
+                const generateChildrenHTML = (parentId) => {
+                    const childTags = children.filter(child => child.parent === parentId);
 
-                const tagsContainer = tags.filter(tag => !tag.parent).map(tag =>
-                    `
-                        <div class="accordion-item">
-                    <div class="accordion">${tag.name} <span class="arrow"><svg width="26" height="26" viewBox="0 0 26 26"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8.125 6.52031L9.76523 4.875L17.875 13L9.76523 21.125L8.125 19.4797L14.5895 13L8.125 6.52031Z"
-                                    fill="#1A1818" />
-                            </svg>
-                        </span></div>
-                    ${tagsHTML}
-                </div>
-                `).join('');
+                    return childTags.map(child => `
+                        <div class="panel">
+                            <p>${child.name || 'Невідомо'}</p>
+                        </div>
+                    `).join('');
+                };
 
-                // tags.name це масив дом темплейт має працювати для масива
+                // Генеруємо HTML для кожного батьківського елемента
+                const tagsContainer = tags.filter(tag => !tag.parent).map(tag => {
+                    const childHTML = generateChildrenHTML(tag._id);
+
+                    return `
+        <div class="accordion-item">
+            <div class="accordion">
+                ${tag.name} 
+                <span class="arrow">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.125 6.52031L9.76523 4.875L17.875 13L9.76523 21.125L8.125 19.4797L14.5895 13L8.125 6.52031Z" fill="#1A1818" />
+                    </svg>
+                </span>
+            </div>
+            <div class="panel-container">
+                ${childHTML}
+            </div>
+        </div>
+    `;
+                }).join('');
+
                 const tagHTML = Dom.template('alltag', {
                     tags: tagsContainer
                 });
-
                 Dom.add('alltag', tagHTML);
+
+                // Додаємо логіку для відкриття/закриття категорій
+                const accordions = document.querySelectorAll('.accordion');
+                accordions.forEach(accordion => {
+                    accordion.addEventListener('click', function () {
+                        const panelContainer = this.nextElementSibling;
+                        if (panelContainer) {
+                            if (panelContainer.style.maxHeight) {
+                                panelContainer.style.maxHeight = null;
+                                panelContainer.classList.remove('show');
+                            } else {
+                                panelContainer.style.maxHeight = panelContainer.scrollHeight + 'px';
+                                panelContainer.classList.add('show');
+                            }
+                        }
+                        this.classList.toggle('active');
+                    });
+                });
             };
 
             const renderProducts = (products) => {
