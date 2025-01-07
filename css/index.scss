@@ -2,7 +2,9 @@
 #hero-text {
     order: -1;
 }
-
+.products-wrapper{
+    position: relative;
+}
 .overlay {
     position: fixed;
     top: 0;
@@ -568,10 +570,10 @@ ul {
     &-sidebar {
         flex: 0 0 276px;
         max-width: 276px;
-        box-shadow: 0px 0px 5px 0px #00000078;
+        box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 50%);
         background: #fff;
-        border-radius: 12px;
-
+        border-radius: 6px;
+        height: fit-content;
         &__content {
             padding: 15px;
         }
@@ -587,7 +589,7 @@ ul {
             margin-bottom: 20px;
             box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 22%);
             background: #fff;
-            border-radius: 6px;
+            border-radius: 3px;
             padding: 10px;
         }
     }
@@ -606,8 +608,9 @@ ul {
 }
 
 .accordion {
-    background-color: #f1f1f1;
-    color: #444;
+    background-color: #ececec73;
+    color: #626262;
+    font-weight: 500;
     cursor: pointer;
     padding: 5px 10px;
     width: 100%;
@@ -619,11 +622,18 @@ ul {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s ease;
-    border-radius: 5px;
+    border-radius: 0;
+    .arrow{
+        svg{
+            path{
+                fill:#82ae46;
+            }
+        }
+    }
 }
 
 .accordion.active {
-    background-color: #ccc;
+    background-color: #cccccc38;
 }
 
 .accordion {
@@ -652,12 +662,21 @@ ul {
 }
 
 .panel {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
+    padding: 10px 10px;
+    border-top: 1px solid #ddd;
     background: #f9f9f9;
-    margin-top: 5px;
+    margin-top: 0;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover{
+        p{
+            color: #82ae46;
+        }
+    }
     p {
         margin: 0;
+        font-weight: 600;
+        transition: all .3s;
     }
 }
 
@@ -682,6 +701,62 @@ ul {
     font: 1em sans-serif;
     font-size: 20px;
 }
+#priceRangeMin::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Убираем стандартный стиль ползунка */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #82ae46; /* Цвет ползунка */
+    border-radius: 50%; /* Скругляем ползунок */
+    cursor: pointer; /* Курсор при наведении */
+}
+#priceRangeMax::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Убираем стандартный стиль ползунка */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #82ae46; /* Цвет ползунка */
+    border-radius: 50%; /* Скругляем ползунок */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+#priceRangeMin::-moz-range-thumb{
+    -webkit-appearance: none; /* Убираем стандартный стиль ползунка */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #82ae46; /* Цвет ползунка */
+    border-radius: 50%; /* Скругляем ползунок */
+    cursor: pointer; /* Курсор при наведении */
+}
+#priceRangeMax::-moz-range-thumb{
+    -webkit-appearance: none; /* Убираем стандартный стиль ползунка */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #82ae46; /* Цвет ползунка */
+    border-radius: 50%; /* Скругляем ползунок */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+#priceRangeMin::-ms-thumb{
+    -webkit-appearance: none; /* Убираем стандартный стиль ползунка */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #82ae46; /* Цвет ползунка */
+    border-radius: 50%; /* Скругляем ползунок */
+    cursor: pointer; /* Курсор при наведении */
+}
+#priceRangeMax::-ms-thumb{
+    -webkit-appearance: none; /* Убираем стандартный стиль ползунка */
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #82ae46; /* Цвет ползунка */
+    border-radius: 50%; /* Скругляем ползунок */
+    cursor: pointer; /* Курсор при наведении */
+}
 
 .price-inputs {
     display: flex;
@@ -693,8 +768,9 @@ ul {
     width: 48%;
     padding: 8px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #584c4c;
 }
 
 .range-container {
@@ -938,7 +1014,6 @@ ul {
     }
 
     .panel {
-        padding: 0 8px;
         font-size: 14px;
     }
 
@@ -949,6 +1024,9 @@ ul {
 }
 
 @media (max-width: 767px) {
+    #products{
+        padding-top: 20px;
+    }
     .products-sidebar {
         opacity: 0;
         position: absolute;
