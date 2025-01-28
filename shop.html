@@ -341,10 +341,8 @@
                         <input type="number" id="maxPrice" placeholder="Максимальна ціна" />
                     </div>
                     <div class="range-container">
-                        <input type="range" id="priceRangeMin" class="range-slider" min="0" max="1000" value="0"
-                            step="1">
-                        <input type="range" id="priceRangeMax" class="range-slider" min="0" max="1000" value="1000"
-                            step="1">
+                        <input type="range" id="priceRangeMin" class="range-slider" min="0" max="1000" value="0" step="1">
+                        <input type="range" id="priceRangeMax" class="range-slider" min="0" max="1000" value="1000" step="1">
                         <div class="slider-range" id="sliderRange"></div>
                     </div>
                 </div>
@@ -385,8 +383,7 @@
         <div id="template-products" style="display: none;">
             <div class="col-md-6 col-lg-3 ftco-animate mb-5">
                 <div class="product">
-                    <a href="/product-single#{id}" class="img-prod"><img class="img-fluid" src="https://webart.work{thumb}"
-                            alt="Product photo">
+                    <a href="/product-single#{id}" class="img-prod"><img class="img-fluid" src="{thumb}" alt="Product photo">
                         <span class="status">30%</span>
                         <div class="overlay"></div>
                     </a>
@@ -402,8 +399,7 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                    class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                     <span><i class="ion-ios-menu"></i></span>
                                 </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
@@ -542,7 +538,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="product">
                                 <a href="/product-single#${product._id}" class="img-prod">
-                                    <img class="img-fluid" src="${product.thumb}" alt="Product photo">
+                                    <img class="img-fluid" src="https://webart.work${product.thumb}" alt="Product photo">
                                     <div class="overlay"></div>
                                 </a>
                                 <div class="text py-3 pb-4 px-3 text-center">
@@ -644,6 +640,7 @@
         </section> -->
     </div>
 </div>
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row">
