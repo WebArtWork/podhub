@@ -150,6 +150,8 @@ AOS.init({
 	});
 
 	// scroll
+	/*
+
 	var scrollWindow = function () {
 		$(window).scroll(function () {
 			var $w = $(this),
@@ -188,6 +190,7 @@ AOS.init({
 		});
 	};
 	scrollWindow();
+	*/
 
 	var counter = function () {
 		$("#section-counter").waypoint(

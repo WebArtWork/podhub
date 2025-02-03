@@ -11628,7 +11628,7 @@ h5,
 
 @media (max-width: 991.98px) {
   .ftco-navbar-light .navbar-brand {
-    color: #fff;
+    color: #82ae46;
   }
 }
 
@@ -11878,7 +11878,9 @@ h5,
   display: flex;
   flex-flow: column wrap;
 }
-
+.hero-content h1{
+  font-weight: 900;
+}
 .btn-primary {
   background-color: #6a983c;
   border-color: #6a983c;
