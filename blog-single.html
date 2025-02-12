@@ -96,7 +96,74 @@
 		.icon-shopping_cart {
 			font-size: 29px;
 		}
+		.header-sidebar{
+			display: flex;
+			align-items: center;
+			font-size: 18px;
+			font-weight: 600;
+			border-bottom: 3px solid;
+			padding: 0 5px;
+			cursor: pointer;
+			margin-left: -140px;
+			position: relative;
+		}
+		.header-side{
+			position: absolute;
+		}
+		.header-sidebar__arrow{
+			margin-left: 10px;
+			transition: all .3s;
+		}
+		.products-sidebar-header{
+			position: absolute;
+			top: 38px;
+			width: 280px;
+			display: flex;
+			left: -15px;
+			height: 0;
+			transition: all .3s;
+			overflow: hidden;
+		}
+		.products-sidebar-header--open{
+			height: fit-content;
+			overflow: visible;
+		}
+		.header-sidebar__arrow--open{
+			transform: rotate(90deg);
+		}
+		.products-sidebar-header .products-sidebar__content{
+			padding: 1px;
+			height: 275px;
+			background: #f5f5f5;
+			overflow-y: scroll;
+			border-radius: 12px;
+		}
+		.products-sidebar__content::-webkit-scrollbar {
+		width: 8px;  /* або висота, якщо вертикальний */
+		height: 8px; /* для горизонтального */
+		}
 
+		/* Стиль для «палець» скролбару */
+		.products-sidebar__content::-webkit-scrollbar-thumb {
+		background-color: #82AE46; /* змінюємо колір скролбару */
+		border-radius: 10px;
+		border: 2px solid transparent;
+		background-clip: content-box;
+		}
+
+		/* Стиль для «трек» скролбару */
+		.products-sidebar__content::-webkit-scrollbar-track {
+		background-color: #f1f1f1; /* фон треку */
+		border-radius: 10px;
+		}
+		.ftco-navbar-light {
+			background: #fff !important;
+			z-index: 4;
+			padding: 0;
+			position: sticky;
+			top: 0;
+			border-bottom: 1px solid #00000012;
+		}
 		@media screen and (max-width: 479px) {
 			.social-links__wrap a svg {
 				width: 22px;
@@ -124,6 +191,22 @@
 			.icon-shopping_cart {
 				font-size: 20px;
 			}
+			.navbar-brand{
+				width: 100%;
+				margin: 0 5px;
+				padding: 0 0 15px;
+			}
+			.header-sidebar{
+				position: absolute;
+				right: 10px;
+			}
+			.products-sidebar-header{
+				right:0;
+				left: unset;
+			}
+			.nav-link__cart{
+				padding: 0.5rem 1rem !important;
+			}
 		}
 	</style>
 </head>
@@ -140,6 +223,53 @@
 			<a class="navbar-brand" href="/">Podhub</a>
 			<div class="burger-wrap">
 				<div class="burger"></div>
+			</div>
+			<div class="header-sidebar">
+				<div class="header-sidebar__text">
+					Категорії
+				</div>
+				<div class="header-sidebar__arrow">
+					<svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1.88667 0.419922L8 6.53325L14.1133 0.419922L16 2.30659L8 10.3066L0 2.30659L1.88667 0.419922Z" fill="#82AE46"/>
+					</svg>						
+				</div>
+				<div class="products-sidebar-header">
+					<div class="products-sidebar__content">
+						<!-- <div class="products-sidebar__item">
+			
+							 <div class="sidebar">
+								<div class="menu-item" id="menuLiquids">
+									Рідини
+									<span class="toggle-arrow">▼</span>
+								</div>
+								<ul class="submenu" id="submenuLiquids">
+									<li>Пункт 1</li>
+									<li>Пункт 2</li>
+								</ul>
+			
+								<div class="menu-item" id="menuDevices">
+									Девайс
+									<span class="toggle-arrow">▼</span>
+								</div>
+								<ul class="submenu" id="submenuDevices">
+									<li>Пункт 1</li>
+									<li>Пункт 2</li>
+								</ul>
+			
+							</div>
+						</div> -->
+						<div class="products-sidebar__item">
+							<div class="products-sidebar__title products-sidebar__title--padding">
+								Категорії
+							</div>
+							<div class="accordion-container" id="alltag">
+							</div>
+						</div>
+						<div id="template-alltag" style="display: none;">
+							<div>{tags}</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="header__navigation">
 				<a href="/">Головна</a>
@@ -791,6 +921,38 @@
 				updateCartCounter();
 			}
 		});
+		
+		class SidebarToggle {
+  constructor() {
+    this.sidebar = document.querySelector('.header-sidebar');
+    this.arrow = document.querySelector('.header-sidebar__arrow');
+    this.header = document.querySelector('.products-sidebar-header');
+    this.init();
+  }
+
+  init() {
+    // Додаємо обробник події на клік по .header-sidebar
+    this.sidebar.addEventListener('click', (event) => {
+      // Перевіряємо, чи натискаємо на саму область .header-sidebar
+      // і не натискаємо на .products-sidebar-header всередині
+      if (!this.header.contains(event.target)) {
+        this.toggleSidebar();
+      }
+    });
+  }
+
+  toggleSidebar() {
+    // Перемикаємо класи для відкриття/закриття сайдбара
+    this.sidebar.classList.toggle('header-sidebar--open');
+    this.arrow.classList.toggle('header-sidebar__arrow--open');
+    this.header.classList.toggle('products-sidebar-header--open');
+  }
+}
+
+// Створюємо новий екземпляр для активації
+new SidebarToggle();
+
+
 	</script>
 
 	<script src="js/jquery.min.js"></script>
