@@ -127,3 +127,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ініціалізація слайдера
     updateSlider();
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".carousels");
+    const prevBtn = document.querySelector(".prev-btns");
+    const nextBtn = document.querySelector(".next-btns");
+
+    prevBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: -200, behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: 200, behavior: "smooth" });
+    });
+});

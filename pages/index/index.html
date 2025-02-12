@@ -49,12 +49,47 @@
 	window.addEventListener("resize", changeView); // Recalculate on resize
 </script>
 
+
+<section class="ftco-section">
+	<div class="container">
+<div class="carousels-container">
+    <button class="prev-btns">&#10094;</button>
+    <div class="carousels">
+        <div class="carousels-item">
+            <img src="img/alchemist.jpg" alt="Одноразові Pod системи">
+            <p>Одноразові Pod системи</p>
+        </div>
+        <div class="carousels-item">
+            <img src="assets/pod-system.png" alt="POD - системи">
+            <p>POD - системи</p>
+        </div>
+        <div class="carousels-item">
+            <img src="assets/liquids.png" alt="Рідини для електронних сигарет">
+            <p>Рідини для електронних сигарет</p>
+        </div>
+        <div class="carousels-item">
+            <img src="assets/diy.png" alt="Набори для самозамісу">
+            <p>Набори для самозамісу</p>
+        </div>
+        <div class="carousels-item">
+            <img src="assets/cartridges.png" alt="Випарники, картриджі">
+            <p>Випарники, картриджі</p>
+        </div>
+        <div class="carousels-item">
+            <img src="assets/diy-kit.png" alt="Самозаміс">
+            <p>Самозаміс</p>
+        </div>
+    </div>
+    <button class="next-btns">&#10095;</button>
+</div>
+</div>
+</section>
+
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center mb-3 pb-3">
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<span class="subheading">Товари</span>
-				<h2 class="mb-4">Хіти продажу</h2>
 			</div>
 		</div>
 	</div>
@@ -457,21 +492,16 @@
 	<a href="/product-single#{id}">
 		<div class="col-md-6 col-lg-3 height-product">
 			<div class="product">
-				<img class="img-fluid" src="{thumb}" alt="Product Image" />
+				<img src="https://webart.work{thumb}" class="img-fluid" alt="Product Image" />
 				<h3 style="font-size: 18px; color: #2E2E2E; margin-top: 10px;">{name}</h3>
 				<div class="product__info">
 					<p class="price">
 						<span class="price-sale">{price} грн</span>
 					</p>
-					<div class="product__btn d-flex addProductButton" product="{{{product|json}}}">
-						<a href="/checkout" class="buy-now d-flex align-items-center">
-							<span><i class="ion-ios-cart" style="color: #FFFFFF; font-size: 24px;"></i></span>
-						</a>
-					</div>
+				</a>
 				</div>
 			</div>
 		</div>
-	</a>
 </div>
 <script type="module">
 	import Dom from "https://webart.work/api/wjst/dom";
