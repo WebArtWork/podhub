@@ -11854,7 +11854,7 @@ h5,
 }
 
 .hero {
-  height: 100vh;
+  height: 60vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -14575,6 +14575,10 @@ textarea.form-control {
 }
 
 .carousels-item p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: center;
   margin-top: 8px;
   font-size: 14px;
 }
@@ -14599,4 +14603,8 @@ textarea.form-control {
 
 .next-btns {
   right: 2px;
+}
+.tags-container{
+  display: flex;
+ gap: 20px;
 }
