@@ -58,7 +58,75 @@
 
 			;
 		}
+		body.no-scroll {
+            overflow: hidden;
+        }
+				#ageModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
 
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .modal-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-buttons button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .yes-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .no-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #45a049;
+        }
+
+        .no-btn:hover {
+            background: #c0392b;
+        }
 		.social-links {
 			display: flex;
 			align-items: center;
@@ -218,6 +286,19 @@
 		</div>
 	</div>
 	-->
+
+	<div id="ageModal">
+		<div class="modal-content">
+				<div class="modal-header">18+</div>
+				<h2>Вам вже виповнилося 18 років?</h2>
+				<p>Інформація на сайті призначена для осіб, які досягли 18-річного віку.</p>
+				<div class="modal-buttons">
+						<button class="yes-btn" onclick="confirmAge()">Так</button>
+						<button class="no-btn" onclick="denyAccess()">Ні</button>
+				</div>
+		</div>
+</div>
+
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="/">Podhub</a>
@@ -922,6 +1003,33 @@
 		</svg>
 	</div>
 
+	<<script>
+		function disableScroll() {
+				document.body.classList.add("no-scroll");
+		}
+
+		function enableScroll() {
+				document.body.classList.remove("no-scroll");
+		}
+
+		// Перевіряємо, чи вже є в localStorage запис про вік
+		if (localStorage.getItem("isAdult") === "true") {
+				document.getElementById("ageModal").style.display = "none";
+		} else {
+				disableScroll(); // Блокуємо прокрутку
+		}
+
+		function confirmAge() {
+				localStorage.setItem("isAdult", "true");
+				document.getElementById("ageModal").style.display = "none";
+				enableScroll(); // Дозволяємо прокрутку
+		}
+
+		function denyAccess() {
+				alert("Вибачте, доступ заборонений!");
+				window.location.href = "https://www.google.com"; // або інша сторінка
+		}
+</script>
 	<script>
 		const cartCounter = document.getElementById("cartCounter");
 
