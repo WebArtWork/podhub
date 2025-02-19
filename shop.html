@@ -57,9 +57,9 @@
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
+				
 				<a href="/">
-					<img src="img/befflogo.png" width="60px">
+					<img src="img/befflogo.png" width="80px">
 				</a>
 
 				<div class="d-lg-none">
@@ -88,61 +88,28 @@
 					</ul>
 
 					<div class="d-none d-lg-block">
-						<a href="sign-in.html" class="bi-phone custom-icon me-3"></a>
+							<a href="tel:+380930935126" class="bi-phone custom-icon me-3"></a>
 
 						<a href="product-detail.html" class="bi-bag custom-icon"></a>
 					</div>
 				</div>
 			</div>
 		</nav>
-		<div class="hero-wrap hero-bread" style="background-image: url('img/smoke.jpg')">
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
-                <h1 class="mb-0 bread">Товари</h1>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="overlay">
-    <button class="close-btn">✖</button>
-</div>
+		<section class="featured-product section-padding">
 <div class="products-wrapper">
     <div class="products-sidebar">
         <div class="products-sidebar__content">
-            <!-- <div class="products-sidebar__item">
 
-                 <div class="sidebar">
-                    <div class="menu-item" id="menuLiquids">
-                        Рідини
-                        <span class="toggle-arrow">▼</span>
-                    </div>
-                    <ul class="submenu" id="submenuLiquids">
-                        <li>Пункт 1</li>
-                        <li>Пункт 2</li>
-                    </ul>
-
-                    <div class="menu-item" id="menuDevices">
-                        Девайс
-                        <span class="toggle-arrow">▼</span>
-                    </div>
-                    <ul class="submenu" id="submenuDevices">
-                        <li>Пункт 1</li>
-                        <li>Пункт 2</li>
-                    </ul>
-
-                </div>
-            </div> -->
             <div class="products-sidebar__item">
                 <div class="products-sidebar__title products-sidebar__title--padding">
                     Категорії
                 </div>
-                <div class="accordion-container" id="alltag">
-                </div>
+                <!-- <div class="accordion-container" id="alltag">
+                </div> -->
             </div>
-            <div id="template-alltag" style="display: none;">
+            <!-- <div id="template-alltag" style="display: none;">
                 <div>{tags}</div>
-            </div>
+            </div> -->
 
 
             <div class="products-sidebar__item">
@@ -170,19 +137,7 @@
         </div>
     </div>
     <div class="products-main">
-        <!--
-        <div class="row">
-            <div class="col-md-10">
-                <ul class="product-category">
-                    <li><a href="#" class="active">All</a></li>
-                    <li><a href="#">Vegetables</a></li>
-                    <li><a href="#">Fruits</a></li>
-                    <li><a href="#">Juice</a></li>
-                    <li><a href="#">Dried</a></li>
-                </ul>
-            </div>
-        </div>
-        -->
+
         <div class="row" id="products">
 
         </div>
@@ -194,8 +149,11 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+</section>
 
-        <div id="template-products" style="display: none;">
+        <!-- <div id="template-products" style="display: none;">
             <div class="col-md-6 col-lg-3 ftco-animate mb-5">
                 <div class="product">
                     <a href="/product-single#{id}" class="img-prod">
@@ -208,8 +166,7 @@
                         <div class="d-flex">
                             <div class="pricing">
                                 <p class="price">{price} грн.
-                                    <!-- <span class="mr-2 price-dc">{price} грн.</span> -->
-                                    <!-- <span class="price-sale">$80.00</span> -->
+                               
                                 </p>
                             </div>
                         </div>
@@ -229,7 +186,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <script type="module">
             import Dom from "https://webart.work/api/wjst/dom";
             let currentPage = 1;
@@ -351,18 +308,30 @@
 
                 products.forEach(product => {
                     productsContainer.innerHTML += `
-                        <div class="col-md-6 col-lg-3">
-                            <div class="product">
-                                <a href="/product-single#${product._id}" class="img-prod">
-                                    <img class="img-fluid" src="https://webart.work${product.thumb}" alt="Product photo">
-                                    <div class="overlay"></div>
-                                </a>
-                                <div class="text py-3 pb-4 px-3 text-center">
-                                    <h3><a href="/product-single#${product._id}">${product.name}</a></h3>
-                                    <p class="price">${product.price} грн.</p>
-                                </div>
-                            </div>
-                        </div>
+
+                    	<div class="col-lg-3 col-12 mb-6">
+		<div class="product-thumb">
+			<a href="/product-single#${product._id}">
+				<img src="https://webart.work${product.thumb}" class="img-fluid product-image" alt="">
+			</a>
+
+			<div class="product-top d-flex">
+				<span class="product-alert me-auto"><span class="pod">${product.price}</span> <span class="hub">грн</span></span>
+
+				<a href="#" class="bi-heart-fill product-icon"></a>
+			</div>
+
+			<div class="product-info d-flex">
+				<div>
+					<p class="product-title mb-0">
+						<a href="/product-single#${product._id}}" class="product-title-link">${product.name}</a>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
                     `;
                 });
             };
@@ -434,28 +403,6 @@
 
             loadProducts();
         </script>
-
-
-        <!-- <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-            <div class="container py-4">
-                <div class="row d-flex justify-content-center py-5">
-                    <div class="col-md-6">
-                        <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
-                        <span>Get e-mail updates about our latest shops and special offers</span>
-                    </div>
-                    <div class="col-md-6 d-flex align-items-center">
-                        <form action="#" class="subscribe-form">
-                            <div class="form-group d-flex">
-                                <input type="text" class="form-control" placeholder="Enter email address">
-                                <input type="submit" value="Subscribe" class="submit px-3">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-    </div>
-</div>
 
 	</main>
 	

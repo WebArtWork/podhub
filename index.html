@@ -57,9 +57,9 @@
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
+				
 				<a href="/">
-					<img src="img/befflogo.png" width="60px">
+					<img src="img/befflogo.png" width="80px">
 				</a>
 
 				<div class="d-lg-none">
@@ -88,7 +88,7 @@
 					</ul>
 
 					<div class="d-none d-lg-block">
-						<a href="sign-in.html" class="bi-phone custom-icon me-3"></a>
+							<a href="tel:+380930935126" class="bi-phone custom-icon me-3"></a>
 
 						<a href="product-detail.html" class="bi-bag custom-icon"></a>
 					</div>
@@ -103,7 +103,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-10">
-						<h1 class="slick-title"><span class="pod">POD</span><span class="hub"> HUB</span></h1>
+						<h1 class="slick-title">
+								<img src="img/befflogo.png">
+							<span class="pod">POD</span><span class="hub"> HUB</span></h1>
 
 						<p class="lead text-white mt-lg-3 mb-lg-5">улюблене місце людей, які цінують якісну консультацію та сертифіковану
 							продукцію.</p>
@@ -153,6 +155,20 @@
 
 </section>
 
+
+
+<section class="featured-product section-padding">
+	<div class="carousels-container container">
+		<div class="carousels">
+			<button class="prev-btns">&#10094;</button>
+			<div class="tags-container" id="alltag"></div>
+		</div>
+		<button class="next-btns">&#10095;</button>
+	</div>
+</section>
+
+
+
 <section class="featured-product section-padding">
 	<div class="container">
 		<div class="col-12 text-center">
@@ -168,7 +184,45 @@
 	</div>
 </section>
 
+<div class="row" id="articles">
+
+</div>
+
+<div id="template-alltag" style="display: none;">
+	<div class="carousels-item">
+		<a href="shop?id={id}">
+			<img src="https://webart.work{tagthumb}" alt="{tagname}">
+			<p>{tagname}</p>
+		</a>
+	</div>
+</div>
+
+
 <div id="template-products" style="display: none;">
+	<div class="col-lg-3 col-12 mb-6">
+		<div class="product-thumb">
+			<a href="/product-single#{id}">
+				<img src="https://webart.work{thumb}" class="img-fluid product-image" alt="">
+			</a>
+
+			<div class="product-top d-flex">
+				<span class="product-alert me-auto"><span class="pod">{price}</span> <span class="hub">грн</span></span>
+			</div>
+
+			<div class="product-info d-flex">
+				<div>
+					<p class="product-title mb-0">
+						<a href="/product-single#{id}" class="product-title-link">{name}</a>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="template-articles" style="display: none;">
 	<div class="col-lg-3 col-12 mb-6">
 		<div class="product-thumb">
 			<a href="/product-single#{id}">
@@ -185,7 +239,6 @@
 				<div>
 					<p class="product-title mb-0">
 						<a href="/product-single#{id}" class="product-title-link">{name}</a>
-						</>
 
 
 				</div>
@@ -193,6 +246,8 @@
 		</div>
 	</div>
 </div>
+
+
 <script type="module">
 	import Dom from "https://webart.work/api/wjst/dom";
 
@@ -214,6 +269,27 @@
 			return products;
 		} catch (error) {
 			console.error('Error fetching products:', error);
+			return [];
+		}
+	};
+	const fetchArticles = async () => {
+		try {
+			const response = await fetch('https://webart.work/api/commerce/articles', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					commerce: '674d9cbe7f4e98c4f2482a20'
+				})
+			});
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			const articles = await response.json();
+			return articles;
+		} catch (error) {
+			console.error('Error fetching articles:', error);
 			return [];
 		}
 	};
@@ -262,6 +338,31 @@
 		});
 	};
 
+
+	const renderArticles = (articles) => {
+		if (articles.length === 0) {
+			console.warn('No articles found for the specified commerce.');
+			return;
+		}
+		articles.forEach((article, index) => {
+			Dom.add('articles', Dom.template('articles', {
+				title: article.title || 'No title',
+				link: article.link || '',
+				video: article.video || '',
+				shortDescription: article.shortDescription || '',
+				thumb: article.thumb || '',
+				description: article.description || '',
+				published: article.published || '',
+				tags: article.tags || [],
+				linkRef: article.linkRef || [],
+				linkId: article.linkId || ''
+
+			}));
+		});
+	};
+
+
+
 	const renderTags = (tags) => {
 		if (!tags) {
 			console.warn('No tag found.');
@@ -274,13 +375,17 @@
 		parents.forEach((tag, index) => {
 			Dom.add('alltag', Dom.template('alltag', {
 				tagthumb: tag.thumb || 'default.jpg',
-				tagname: tag.name || 'No Name'
+				tagname: tag.name || 'No Name',
+				id: tag._id || 'No id'
 			}));
 		});
 	};
 
 	fetchProducts().then((products) => {
 		renderProducts(products);
+	});
+	fetchArticles().then((articles) => {
+		renderArticles(articles);
 	});
 	fetchTags().then((tags) => {
 		renderTags(tags);
@@ -322,7 +427,7 @@
 					<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
 						<div class="row">
-							<div class="col-lg-7 col-12">
+							<div class="col-lg-7 col-12 img-info">
 								<img src="img/image2.png" class="img-fluid" alt="">
 							</div>
 
@@ -342,10 +447,8 @@
 					<div class="tab-pane fade" id="pills-youtube" role="tabpanel" aria-labelledby="pills-youtube-tab">
 
 						<div class="row">
-							<div class="col-lg-7 col-12">
-								<div class="ratio ratio-16x9">
+							<div class="col-lg-7 col-12 img-info">
 									<img src="img/image3.png" class="img-fluid" alt="">
-								</div>
 							</div>
 
 							<div class="col-lg-5 col-12">
@@ -362,7 +465,7 @@
 
 					<div class="tab-pane fade" id="pills-skill" role="tabpanel" aria-labelledby="pills-skill-tab">
 						<div class="row">
-							<div class="col-lg-7 col-12">
+							<div class="col-lg-7 col-12 img-info">
 								<img src="img/image4.png" class="img-fluid" alt="">
 							</div>
 
@@ -377,11 +480,11 @@
 						</div>
 					</div>
 
-					<div class="tab-pane" id="pills-suprize" role="tabpanel" aria-labelledby="pills-suprize-tab">
+					<div class="tab-pane fade" id="pills-suprize" role="tabpanel" aria-labelledby="pills-suprize-tab">
 
 						<div class="row">
-							<div class="col-lg-7 col-12">
-								<img src="img/image.png" class="img-fluid" alt="">
+							<div class="col-lg-7 col-12 img-info">
+								<img src="img/suprize.png" class="img-fluid" alt="">
 							</div>
 
 							<div class="col-lg-5 col-12">
@@ -395,18 +498,24 @@
 						</div>
 					</div>
 
-					<div class="tab-pane" id="pills-delivery" role="tabpanel" aria-labelledby="pills-delivery-tab">
+					<div class="tab-pane fade" id="pills-delivery" role="tabpanel" aria-labelledby="pills-delivery-tab">
 
 						<div class="row">
-							<div class="col-lg-7 col-12">
-								<img src="img/image5.png" class="img-fluid" alt="">
+							<div class="col-lg-7 col-12 img-info">
+								<img src="img/map.jpg" class="img-fluid" alt="">
 							</div>
 
 							<div class="col-lg-5 col-12">
 								<div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
 									<h4 class="mb-3"><span class="pod">Доставка по місту </span><span class="hub">та Україні</span></h4>
 
-									<p>Пропонуємо оперативну доставку по всьому місту та Україні. Замовляйте продукцію PODHUB та отримуйте її максимально швидко та зручно.</p>
+									<p>Пропонуємо оперативну доставку по всьому місту та Україні. Замовляйте продукцію PODHUB та отримуйте її максимально швидко та зручно.
+									</p>
+									<p>Пропонуємо декілька варіантів оперативних доставок:<br>
+										- Доставки по містах де є наші магазини (місцеві служби доставок)<br>
+										- Доставка Новою Поштою<br>
+										Усі замовлення обробляються та відправляються від 10хв до 2 годин.
+										Замовляйте продукцію в POD HUB та отримуйте її максимально швидко та зручно.</p>
 
 								</div>
 							</div>
