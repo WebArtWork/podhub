@@ -30,7 +30,7 @@
     
   })(window.jQuery);
 
-
+///
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -71,4 +71,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   renderPagination();
+});
+
+///
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.body.addEventListener("click", function(event) {
+      if (event.target.classList.contains("product-img")) {
+          document.querySelectorAll(".product-img").forEach(el => el.classList.remove("active"));
+          event.target.classList.add("active");
+      } else if (event.target.id == 'toggleButton') {
+        let descContainer = document.getElementById("description");
+        let toggleButton = document.getElementById("toggleButton");
+
+        if (descContainer.classList.contains("expanded")) {
+          descContainer.classList.remove("expanded");
+          toggleButton.textContent = "Показати більше";
+      } else {
+          descContainer.classList.add("expanded");
+          toggleButton.textContent = "Показати менше";
+      }
+      }
+  });
 });
