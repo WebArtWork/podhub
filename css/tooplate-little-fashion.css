@@ -221,7 +221,7 @@ strong {
 -----------------------------------------*/
 .custom-btn {
   background: var(--violet-color);
-  border-radius: 50px;
+  border-radius: 10px;
   color: var(--white-color);
   font-size: var(--copyright-text-font-size);
   text-transform: uppercase;
@@ -246,7 +246,6 @@ strong {
 }
 
 .cart-btn {
-  border-radius: 0;
   width: 100%;
   font-size: var(--product-link-font-size);
 }
@@ -1376,7 +1375,7 @@ button:focus:not(:focus-visible) {
   margin-top: 10px;
   display: inline-block;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .toggle-btn:hover {
