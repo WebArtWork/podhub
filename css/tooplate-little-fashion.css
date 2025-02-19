@@ -11,7 +11,7 @@ https://www.tooplate.com/view/2127-little-fashion
   CUSTOM PROPERTIES ( VARIABLES )             
 -----------------------------------------*/
 :root {
-  --white-color:                #ffffff;
+  --white-color:                #ecf2f9;
   --primary-color:              #1d9c0c;
   --violet-color:               #cd27e0;
   --section-bg-color:           #f0f8ff;
@@ -327,13 +327,15 @@ strong {
 /*---------------------------------------
   NAVIGATION               
 -----------------------------------------*/
+nav{
+  height: 60px;
+}
 .navbar {
   background: var(--white-color);
   position: fixed;
-  top: 0;
+  top: -5px;
   right: 0;
   left: 0;
-  padding: 25px 0;
   z-index: 2;
   will-change: transform;
   transition: transform 300ms linear;
@@ -516,7 +518,7 @@ strong {
 }
 
 .slick-slideshow {
-  margin-top: 86px;
+  margin-top: 46px;
   height: 500px;
 }
 
@@ -528,9 +530,15 @@ strong {
   position: relative;
 }
 
-.slick-custom img {
+.slick-custom .img-fluid {
   width: 100%;
   object-fit: cover;
+}
+.slick-title img{
+  width: 200px;
+  position: relative;
+  left: 35%;
+
 }
 
 .slick-bottom {
@@ -546,7 +554,7 @@ strong {
 
 .slick-bottom .container {
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 50%;
   text-align: center;
   transform: translate(-26%, -40%);
@@ -723,7 +731,7 @@ section {
 
 .section-padding {
   padding-top: 3rem;
-  padding-bottom: 7rem;
+  padding-bottom: 3rem;
 }
 
 .featured {
@@ -898,6 +906,11 @@ button:focus:not(:focus-visible) {
 
 .product-image {
   transition: all 0.5s ease-out;
+  width: 250px; 
+  height: 250px; 
+  object-fit: cover; 
+  border-radius: 20px;
+
 }
 
 .product-thumb:hover .product-image {
@@ -927,6 +940,7 @@ button:focus:not(:focus-visible) {
 
 .product-title-link {
   color: var(--dark-color);
+  font-size: 14px;
 }
 
 .product-additional-link {
@@ -942,6 +956,7 @@ button:focus:not(:focus-visible) {
   font-size: var(--custom-link-font-size);
   font-weight: var(--font-weight-bold);
   padding: 3px 10px;
+  font-size: 16px;
 }
 
 .product-p {
@@ -1188,4 +1203,117 @@ button:focus:not(:focus-visible) {
 }
 .hub{
   color: var(--primary-color);
+}
+
+
+.carousels-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+
+  overflow: hidden;
+}
+
+.carousels {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousels-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.carousels-item {
+  flex: 0 0 auto;
+  width: 150px;
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.carousels-item img {
+  width: 80px;
+  height: auto;
+}
+
+.carousels-item p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.prev-btns, .next-btns {
+  position: absolute;
+  top: 50%;
+
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 20%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btns {
+  left: 2px;
+}
+
+.next-btns {
+  right: 2px;
+}
+.tags-container{
+  display: flex;
+ gap: 20px;
+}
+
+.img-info img {
+  width: 600px; 
+  height: 400px; 
+  object-fit: cover; 
+  border-radius: 20px;
+}
+
+
+#pagination {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#pagination li {
+  display: inline-block;
+  padding: 6px 10px;
+  background: var(--primary-color);
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#pagination li a{
+  color: white;
+  font-size: 16px;
+}
+
+#pagination li:hover {
+  background: var(--violet-color);
+}
+
+#pagination li.active {
+  background: var(--violet-color);
+  color: white;
 }
