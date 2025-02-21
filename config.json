@@ -5,24 +5,112 @@
 		"page": [
 			{
 				"name": "lottery",
-				"url": "lottery1",
+				"url": "lottery_zhmerynka",
 				"json": {
 					"name": "lottery",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
-					"tiktok": "https://www.tiktok.com/@pod.hub.shop",
+					"tiktok": "https://www.tiktok.com/@pod_hub_zhmerynka?_t=ZM-8u64OddyTzS&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
-					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.0360826,25.8043632,8z/data=!4m18!1m9!3m8!1s0x4732a31eda583757:0x85491a459168336!2zUE9EIEhVQiBWYXBlIFNob3AgKNCS0LXQudC_INCo0L7Qvyk!8m2!3d49.0360826!4d28.1114921!9m1!1b1!16s%2Fg%2F11wbvtm1g5!3m7!1s0x4732a31eda583757:0x85491a459168336!8m2!3d49.0360826!4d28.1114921!9m1!1b1!16s%2Fg%2F11wbvtm1g5?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.0360826,25.8043632,8z/data=!4m8!3m7!1s0x4732a31eda583757:0x85491a459168336!8m2!3d49.0360826!4d28.1114921!9m1!1b1!16s%2Fg%2F11wbvtm1g5?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
 				}
 			},
 			{
 				"name": "lottery",
-				"url": "lottery2",
+				"url": "lottery_kamianets1",
 				"json": {
 					"name": "lottery",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
-					"tiktok": "https://www.tiktok.com/@pod.hub.shop",
+					"tiktok": "www.tiktok.com/@pod.hub.kamianets",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
-					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.0360826,25.8043632,8z/data=!4m18!1m9!3m8!1s0x4732a31eda583757:0x85491a459168336!2zUE9EIEhVQiBWYXBlIFNob3AgKNCS0LXQudC_INCo0L7Qvyk!8m2!3d49.0360826!4d28.1114921!9m1!1b1!16s%2Fg%2F11wbvtm1g5!3m7!1s0x4732a31eda583757:0x85491a459168336!8m2!3d49.0360826!4d28.1114921!9m1!1b1!16s%2Fg%2F11wbvtm1g5?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@48.6865185,26.5811592,17z/data=!4m8!3m7!1s0x4733c7ee6bfdc96f:0x52b7bfcf4d95576a!8m2!3d48.6865185!4d26.5811592!9m1!1b1!16s%2Fg%2F11vzgl43bv?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_kamianets2",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@48.7286667,26.4741975,12z/data=!4m8!3m7!1s0x4733c9482b602db3:0xb73acf8b1ef7764a!8m2!3d48.700428!4d26.5734023!9m1!1b1!16s%2Fg%2F11lthpksjg?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_мinnytsian",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "https://www.tiktok.com/@pod.hub.shop?_t=ZM-8u63sBc6MKt&_r=1",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.2203558,28.560746,17z/data=!4m8!3m7!1s0x472d5b417206dd73:0xc151536f1c9fb8e9!8m2!3d49.2203558!4d28.560746!9m1!1b1!16s%2Fg%2F11vqm_hfdy?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_bar",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "https://www.tiktok.com/@pod.hub.bar4?_t=ZM-8u63sW78wj8&_r=1",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.0723042,27.6730591,17z/data=!4m8!3m7!1s0x4732893ee4fec481:0xb6326d66fbe9e3d8!8m2!3d49.0723042!4d27.6730591!9m1!1b1!16s%2Fg%2F11wx1sm37c?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_khmelnytskyi",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.4051402,26.989973,17z/data=!4m8!3m7!1s0x473207cc13cec2c5:0x31b19e27f27371ec!8m2!3d49.4051402!4d26.989973!9m1!1b1!16s%2Fg%2F11w27_qmw_?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_berdychiv1",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "https://www.tiktok.com/@podhub.brd?_t=ZM-8u64GMdPmtB&_r=1",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.8989477,28.5814518,17z/data=!4m8!3m7!1s0x472cf9ed638d0607:0x77cbb8fe96cc8f23!8m2!3d49.8989477!4d28.5814518!9m1!1b1!16s%2Fg%2F11vytn6nwd?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_berdychiv2",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "https://www.tiktok.com/@podhub_berdychiv?_t=ZM-8u63rIjFhlV&_r=1",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com.ua/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@49.8899935,28.611031,17z/data=!4m8!3m7!1s0x472cfb6e90497cb5:0x307f83f786ec3dca!8m2!3d49.8899935!4d28.611031!9m1!1b1!16s%2Fg%2F11vwkdr964?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_uman1",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "https://www.tiktok.com/@pod_hub_uman?_t=ZM-8u64eXikLlV&_r=1",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@48.747876,30.2205363,17z/data=!4m8!3m7!1s0x40d20d6ed7aa1e45:0x3e91e80b3edfb135!8m2!3d48.747876!4d30.2205363!9m1!1b1!16s%2Fg%2F11wngbl711?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+				}
+			},
+			{
+				"name": "lottery",
+				"url": "lottery_uman2",
+				"json": {
+					"name": "lottery",
+					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
+					"tiktok": "https://www.tiktok.com/@pod.hub.uman?_t=ZM-8u63sBc5G8l&_r=1",
+					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
+					"map": "https://www.google.com/maps/place/POD+HUB+Vape+Shop+(%D0%92%D0%B5%D0%B9%D0%BF+%D0%A8%D0%BE%D0%BF)/@48.7572712,30.2162763,17z/data=!4m8!3m7!1s0x40d20df0f4f95fdd:0x8b6c285698f2a85!8m2!3d48.7572712!4d30.2162763!9m1!1b1!16s%2Fg%2F11wngcq1gb?entry=ttu&g_ep=EgoyMDI1MDIxOC4wIKXMDSoASAFQAw%3D%3D"
 				}
 			}
 		]
