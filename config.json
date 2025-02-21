@@ -8,6 +8,8 @@
 				"url": "lottery_zhmerynka",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Жмеринка - Вигравай круті призи!",
+					"description": "Приєднуйся до лотереї Pod Hub у Жмеринці! Слідкуй за нами в Instagram, TikTok і Telegram, щоб не пропустити розіграші та акції.",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@pod_hub_zhmerynka?_t=ZM-8u64OddyTzS&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -19,6 +21,8 @@
 				"url": "lottery_kamianets1",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Кам'янець-Подільський - Бери участь у розіграші!",
+					"description": "Pod Hub у Кам'янці-Подільському проводить захопливі лотереї! Долучайся до нас у соцмережах та не пропусти шанс виграти!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "www.tiktok.com/@pod.hub.kamianets",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -30,6 +34,8 @@
 				"url": "lottery_kamianets2",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Кам'янець-Подільський - Грай та вигравай!",
+					"description": "Зіграйте в лотерею Pod Hub у Кам'янці-Подільському! Слідкуйте за нами, щоб не пропустити унікальні акції та розіграші.",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -39,8 +45,10 @@
 			{
 				"name": "lottery",
 				"url": "lottery_vinnytsia",
+				"title": "Лотерея Pod Hub Вінниця - Спробуй свою удачу!",
 				"json": {
 					"name": "lottery",
+					"description": "Приєднуйся до розіграшів Pod Hub у Вінниці! Грай та отримуй шанс виграти круті призи.",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@pod.hub.shop?_t=ZM-8u63sBc6MKt&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -52,6 +60,8 @@
 				"url": "lottery_bar",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Бар - Бери участь та вигравай!",
+					"description": "Лотерея Pod Hub у місті Бар - твій шанс отримати круті призи! Долучайся прямо зараз!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@pod.hub.bar4?_t=ZM-8u63sW78wj8&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -63,6 +73,8 @@
 				"url": "lottery_khmelnytskyi",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Хмельницький - Грай та вигравай!",
+					"description": "Pod Hub у Хмельницькому проводить лотереї! Приєднуйся до нас і отримуй можливість виграти круті подарунки!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -74,6 +86,8 @@
 				"url": "lottery_berdychiv1",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Бердичів - Випробуй удачу!",
+					"description": "Pod Hub у Бердичеві запрошує до участі в захопливій лотереї! Грай та вигравай!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@podhub.brd?_t=ZM-8u64GMdPmtB&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -85,6 +99,8 @@
 				"url": "lottery_berdychiv2",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Бердичів - Грай разом з нами!",
+					"description": "Приєднуйтесь до лотереї Pod Hub у Бердичеві! Унікальні розіграші та цінні призи чекають на тебе!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@podhub_berdychiv?_t=ZM-8u63rIjFhlV&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -96,6 +112,8 @@
 				"url": "lottery_uman1",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Умань - Грай та вигравай!",
+					"description": "Приєднуйся до лотереї Pod Hub в Умані! Унікальні розіграші та круті призи чекають на тебе!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@pod_hub_uman?_t=ZM-8u64eXikLlV&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
@@ -107,6 +125,8 @@
 				"url": "lottery_uman2",
 				"json": {
 					"name": "lottery",
+					"title": "Лотерея Pod Hub Умань - Вигравай разом із нами!",
+					"description": "Стань учасником лотереї Pod Hub в Умані! Грай, слідкуй за оновленнями та отримуй шанс виграти чудові призи!",
 					"insta": "https://www.instagram.com/pod_hub_vape_shop?igsh=a3ZkdGx2b2IzYmQx",
 					"tiktok": "https://www.tiktok.com/@pod.hub.uman?_t=ZM-8u63sBc5G8l&_r=1",
 					"telegram": "https://t.me/Pod_Hub_Vape_Shop",
