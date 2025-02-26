@@ -94,3 +94,37 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const catalogToggle = document.getElementById("catalogToggle");
+  const catalogMenu = document.getElementById("catalogMenu");
+  const submenuItems = document.querySelectorAll(".has-submenu");
+
+  // Відкривання / закривання каталогу
+  catalogToggle.addEventListener("click", function () {
+      if (catalogMenu.style.display === "block") {
+          catalogMenu.style.opacity = "0";
+          setTimeout(() => catalogMenu.style.display = "none", 200);
+      } else {
+          catalogMenu.style.display = "block";
+          setTimeout(() => catalogMenu.style.opacity = "1", 0);
+      }
+  });
+
+  // Відкривання підкатегорій
+  submenuItems.forEach(item => {
+      item.addEventListener("click", function () {
+          this.classList.toggle("open");
+      });
+  });
+
+  // Закриття каталогу при кліку за межами
+  document.addEventListener("click", function (event) {
+      if (!catalogToggle.contains(event.target) && !catalogMenu.contains(event.target)) {
+          catalogMenu.style.opacity = "0";
+          setTimeout(() => catalogMenu.style.display = "none", 200);
+      }
+  });
+});

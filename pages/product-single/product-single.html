@@ -28,7 +28,7 @@
             </div>
 
             <div class="product-cart-thumb row">
-                <div class="col-lg-6 col-12">
+                <div class="col-md-12">
 
                     <select class="form-select cart-form-select" id="inputGroupSelect01">
                         <option selected>Кількість</option>
@@ -40,16 +40,38 @@
                     </select>
                 </div>
 
-                <div class="col-lg-6 col-12 mt-4 mt-lg-0">
-                    <button type="submit" class="btn custom-btn cart-btn" data-bs-toggle="modal" data-bs-target="#cart-modal">Додати у кошик</button>
+                <div class="col-lg-6 col-6 mt-2">
+                    <button type="submit" class="btn custom-btn cart-btn" id="buyNow">Купити зараз</button>
+                </div>
+                <div class="col-lg-6 col-6 mt-2">
+                    <button type="submit" class="btn custom-btn cart-btn" id="addToCart">Додати у кошик</button>
                 </div>
             </div>
         </div>
         <div class="description-product-container" id="description">
-                <p>{description}</p>
+            <p>{description}</p>
         </div>
         <button class="toggle-btn" id="toggleButton">Показати більше</button>
 
+        <div>
+
+
+            <div>Виробник: {country}</div>
+
+            <div>Об`єм/міцність: {volume}</div>
+
+            <div>Вага: {weight}</div>
+
+            <div>Тип: {type}</div>
+
+            <div>Батарея (ємність): {battery}</div>
+
+            <div>Потужність: {power}</div>
+
+            <div>Вигляд атомайзера: {automizertype}</div>
+
+            <div>Гарантія: {warranty}</div>
+        </div>
     </div>
 
     <script type="module">
@@ -81,10 +103,28 @@
                     return [];
                 }
             };
-
             const createOrder = async () => {
-                const quantityInput = Dom.element('quantity');
-                const quantity = parseInt(quantityInput.value, 10) || 1;
+                const quantitySelect = document.getElementById('inputGroupSelect01');
+                const quantity = parseInt(quantitySelect.value, 10) || 1;
+
+                // Отримуємо вибраний варіант `quantity`
+                const selectedQuantityElement = document.querySelector('input[name="selectedQuantity"]:checked');
+
+                if (!selectedQuantityElement) {
+                    alert('Будь ласка, виберіть доступний варіант товару.');
+                    return;
+                }
+
+                // Розбираємо JSON значення з `value`
+                let selectedQuantityData;
+                try {
+                    selectedQuantityData = JSON.parse(selectedQuantityElement.value);
+                } catch (error) {
+                    console.error("Помилка парсингу обраного quantity:", error);
+                    return;
+                }
+
+                console.log("Вибраний quantity:", selectedQuantityData);
 
                 const existingOrder = JSON.parse(localStorage.getItem('order')) || {};
 
@@ -92,6 +132,7 @@
                     id: window.location.hash.substring(1),
                     data: currentProduct,
                     quantity,
+                    selectedQuantity: selectedQuantityData // Передаємо вибраний варіант
                 };
 
                 if (existingOrder.products) {
@@ -110,22 +151,25 @@
                 console.log('Order created/updated:', existingOrder);
             };
 
+
+
             const renderProduct = (product) => {
                 if (!product) {
                     console.warn('No product found.');
                     return;
                 }
 
-                const quantitiesHTML = product.quantity.map(qty => `
-	<div class="col-2">
-		<div class="product-thumb-quantity">
-				<img src="https://webart.work${qty.thumb || ''}" alt="${qty.name || 'Невідомо'}" class="product-img">
+                const quantitiesHTML = product.quantity.map((qty, index) => `
+    <div class="col-2">
+        <div class="product-thumb-quantity">
+            <input type="radio" name="selectedQuantity" id="qty-${index}" value='${JSON.stringify(qty)}' ${index === 0 ? 'checked' : ''} style="display: none;">
+            <label for="qty-${index}">
+                <img src="https://webart.work${qty.thumb || ''}" alt="${qty.name || 'Невідомо'}" class="product-img">
+            </label>
+        </div>
+    </div>
+`).join('');
 
-
-		</div>
-	</div>
-
-    `).join('');
 
                 const productHTML = Dom.template('product', {
                     name: product.product.name || 'No name',
@@ -165,7 +209,7 @@
                 Dom.click("addToCart", () => createOrder());
                 Dom.click("buyNow", async () => {
                     await createOrder();
-                    window.location.href = '/cart';
+                    window.location.href = '/checkout';
                 });
                 Dom.click(".quantity-right-plus", () => operateQuantity(true));
                 Dom.click(".quantity-left-minus", () => operateQuantity(false));
@@ -173,152 +217,4 @@
         });
     </script>
 
-</section>
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center mb-3 pb-3">
-            <div class="col-md-12 heading-section text-center ftco-animate">
-                <span class="subheading">Products</span>
-                <h2 class="mb-4">Related Products</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
-                        <span class="status">30%</span>
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Bell Pepper</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Strawberry</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Green Beans</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template">
-                        <div class="overlay"></div>
-                    </a>
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="#">Purple Cabbage</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-    <div class="container py-4">
-        <!--
-        <div class="row d-flex justify-content-center py-5">
-            <div class="col-md-6">
-                <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
-                <span>Get e-mail updates about our latest shops and special offers</span>
-            </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Enter email address">
-                        <input type="submit" value="Subscribe" class="submit px-3">
-                    </div>
-                </form>
-            </div>
-        </div>-->
-    </div>
 </section>

@@ -1,24 +1,11 @@
-<div class="hero-wrap hero-bread" style="background-image: url('img/smoke.jpg')">
-	<div class="container">
-		<div class="row no-gutters slider-text align-items-center justify-content-center">
-			<div class="col-md-9 ftco-animate text-center">
-				<!-- <p class="breadcrumbs">
-					<span class="mr-2"><a href="index.html">Home</a></span>
-					<span>Розрахуватись</span>
-				</p> -->
-				<h1 class="mb-0 bread">Замовлення</h1>
-			</div>
-		</div>
-	</div>
-</div>
-
-<section class="ftco-section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 ftco-animate">
-				<div class="cart-list">
-					<table class="table">
-						<thead class="thead-primary">
+<section class="featured-product section-padding">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 ftco-animate">
+					<div class="cart-list">
+						<table class="table">
+							<thead class="thead-primary">
 							<tr class="text-center">
 								<th>Фото</th>
 								<th>Товар</th>
@@ -36,9 +23,16 @@
 		</div>
 
 		<div class="row justify-content-center mt-5">
-			<div class="col-xl-7 ftco-animate">
+			<div class="col-xl-12 ftco-animate">
 				<form id="billing-form" class="billing-form">
-					<h3 class="mb-4 billing-heading">Реквізити</h3>
+					<div class="cart-detail cart-total">
+						<h3 class="billing-heading text-center">Кошик</h3>
+						<p class="total-price text-center">
+							<span>Сумарно: </span>
+							<span id="allTotal"></span>
+						</p>
+						<hr />
+					</div>
 					<div class="row align-items-end">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -84,237 +78,162 @@
 					</button>
 				</form>
 			</div>
-			<div class="col-xl-5">
-				<div class="row mt-5 pt-3">
-					<div class="col-md-12 d-flex mb-5">
-						<div class="cart-detail cart-total p-3 p-md-4">
-							<h3 class="billing-heading mb-4">Кошик</h3>
-							<p class="d-flex total-price">
-								<span>Сумарно</span>
-								<span id="allTotal"></span>
-							</p>
-							<hr />
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<!-- .col-md-8 -->
 		</div>
 	</div>
 </section>
 
 <script type="module">
-	function loadOrder() {
-		let order = localStorage.getItem("order");
-		if (order) {
-			document.getElementById("cartCounter").innerHTML = (
-				JSON.parse(order).products || []
-			).length.toString();
-			return JSON.parse(order);
-		} else {
-			// If no order exists, initialize an empty order
-			return { products: [] };
-		}
-	}
-
-	// Function to save order info to local storage
-	function saveOrder(order) {
-		document.getElementById("cartCounter").innerHTML = (
-			order.products || []
-		).length.toString();
-		localStorage.setItem("order", JSON.stringify(order));
-	}
-	const total = (order) => {
-		return (
-			order.products.reduce((total, item) => {
-				return total + item.data.price * item.quantity;
-			}, 0) + " грн"
-		);
-	};
 	document.addEventListener("DOMContentLoaded", function () {
-		const order = loadOrder();
-		const tableBody = document.getElementById("orderTableBody");
-		tableBody.innerHTML = ""; // Clear existing table rows
+    function loadOrder() {
+        let order = localStorage.getItem("order");
+        if (order) {
+            document.getElementById("cartCounter").innerHTML = (
+                JSON.parse(order).products || []
+            ).length.toString();
+            return JSON.parse(order);
+        } else {
+            return { products: [] };
+        }
+    }
 
-		order.products.forEach((product) => {
-			const row = document.createElement("tr");
-			row.id = "productId" + product.data._id;
-			row.className = "text-center";
+    function saveOrder(order) {
+        document.getElementById("cartCounter").innerHTML = (
+            order.products || []
+        ).length.toString();
+        localStorage.setItem("order", JSON.stringify(order));
+    }
 
-			row.innerHTML = `
-	           <td class="image-prod">
-	               <div class="img" style="background-image: url(${product.data.thumb
-				});"></div>
-	           </td>
-	           <td class="product-name">
-	               <h3>${product.data.name}</h3>
-	           </td>
-	           <td class="price">${product.data.price.toFixed(2)} грн</td>
-	           <td class="quantity">
-	               <div class="input-group mb-3">
-	                   <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${product.quantity
-				}" min="1" max="100" product='${JSON.stringify(
-					product
-				)}' />
-	               </div>
-	           </td>
-	           <td class="total" id="total${product.data._id}">${(
-					product.data.price * product.quantity
-				).toFixed(2)} грн</td>
-	           <td class="product-remove">
-	               <div class="input-group mb-3">
-	                   <input type="string" name="comment" class="quantity form-control changeComment" value="${product.comment || ""
-				}" product='${JSON.stringify(
-					product
-				)}' placeholder='' />
-	               </div>
-	           </td>
-	           <td class="product-remove">
-	               <span class="ion-ios-close removeProduct" product='${JSON.stringify(
-					product
-				)}'></span>
-	           </td>
-	       `;
-			tableBody.appendChild(row);
-		});
-		document.getElementById("allTotal").innerHTML =
-			order.products.reduce((total, item) => {
-				return total + item.data.price * item.quantity;
-			}, 0) + " грн";
+    function total(order) {
+        return (
+            order.products.reduce((total, item) => {
+                return total + (item.data.price || 0) * (item.quantity || 1);
+            }, 0) + " грн"
+        );
+    }
 
-		let buttons = document.querySelectorAll(".removeProduct");
-		const clicked = (button) => {
-			return () => {
-				const product = JSON.parse(button.getAttribute("product"));
-				order.products = order.products.filter(
-					(p) => p.id !== product.data._id
-				);
-				saveOrder(order);
-				let row = document.getElementById(`productId${product.data._id}`);
-				if (row) {
-					row.remove();
-				}
-			};
-		};
-		buttons.forEach(function (button) {
-			button.addEventListener("click", clicked(button));
-		});
+    const order = loadOrder();
+    const tableBody = document.getElementById("orderTableBody");
+    tableBody.innerHTML = "";
 
-		let inputs = document.querySelectorAll(".changeQuantity");
-		const changed = (input) => {
-			return () => {
-				const product = JSON.parse(input.getAttribute("product"));
-				const getProduct = order.products.find(
-					(p) => p.data._id === product.data._id
-				);
-				getProduct.quantity = Number(input.value);
-				saveOrder(order);
-				document.getElementById("total" + product.data._id).innerHTML =
-					(product.data.price * Number(input.value)).toFixed(2) + " грн";
-				document.getElementById("allTotal").innerHTML = total(order);
-			};
-		};
-		inputs.forEach(function (input) {
-			input.addEventListener("change", changed(input));
-		});
+    order.products.forEach((product) => {
+        const selectedQuantityName = product.selectedQuantity ? product.selectedQuantity.name : "Не вибрано";
 
-		let cinputs = document.querySelectorAll(".changeComment");
-		const cchanged = (input) => {
-			return () => {
-				const product = JSON.parse(input.getAttribute("product"));
-				const getProduct = order.products.find(
-					(p) => p, data._id === product.data._id
-				);
-				getProduct.comment = input.value;
-				saveOrder(order);
-			};
-		};
-		cinputs.forEach(function (input) {
-			input.addEventListener("change", cchanged(input));
-		});
-	});
+        const row = document.createElement("tr");
+        row.id = "productId" + product.data._id;
+        row.className = "text-center";
 
-	const id = () => {
-		const now = new Date();
-		const year = now.getFullYear().toString().slice(-2); // Short year
-		const month = (now.getMonth() + 1).toString().padStart(2, "0"); // Month (0-indexed, so add 1)
-		const date = now.getDate().toString().padStart(2, "0"); // Date
-		const hours = now.getHours().toString().padStart(2, "0"); // Hours
-		const minutes = now.getMinutes().toString().padStart(2, "0"); // Minutes
+        row.innerHTML = `
+            <td class="image-prod">
+                <div class="img" style="background-image: url(${product.data.thumb || ''});"></div>
+            </td>
+            <td class="product-name">
+                <h3>${product.data.name || 'Невідомий товар'}</h3>
+                <p><strong>Вибраний варіант:</strong> ${selectedQuantityName}</p>
+            </td>
+            <td class="price">${(product.data.price || 0).toFixed(2)} грн</td>
+            <td class="quantity">
+                <div class="input-group mb-3">
+                    <input type="number" name="quantity" class="quantity form-control input-number changeQuantity" value="${product.quantity || 1}" min="1" max="100" data-id="${product.data._id}" />
+                </div>
+            </td>
+            <td class="total" id="total${product.data._id}">${((product.data.price || 0) * (product.quantity || 1)).toFixed(2)} грн</td>
+            <td class="product-remove">
+                <div class="input-group mb-3">
+                    <input type="text" name="comment" class="form-control changeComment" value="${product.comment || ""}" data-id="${product.data._id}" placeholder="Додайте коментар" />
+                </div>
+            </td>
+            <td class="product-remove">
+                <span class="ion-ios-close removeProduct" data-id="${product.data._id}"></span>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
 
-		return `${year}-${month}-${date} ${hours}:${minutes}`;
-	};
-	const productsText = () => {
-		const order = loadOrder();
-		let text = "===================\n";
-		for (const product of order.products) {
-			text += `Товар: ${product.data.name}\nЦіна: ${product.data.price} грн\nКількість: ${product.quantity}\nКоммент: ${product.comment}\n===================\n`;
-		}
-		text += `Все разом: ${total(order)}\n`;
-		return text;
-	};
+    document.getElementById("allTotal").innerHTML = total(order);
 
-	let submited = false;
-	document
-		.getElementById("billing-form")
-		.addEventListener("submit", function (event) {
-			event.preventDefault();
-			if (submited) {
-				return;
-			}
-			submited = true;
+    document.querySelectorAll(".removeProduct").forEach((button) => {
+        button.addEventListener("click", function () {
+            const productId = button.getAttribute("data-id");
+            order.products = order.products.filter((p) => p.data._id !== productId);
+            saveOrder(order);
+            document.getElementById(`productId${productId}`).remove();
+            document.getElementById("allTotal").innerHTML = total(order);
+        });
+    });
 
-			const firstname = document.getElementById("firstname").value;
-			const lastname = document.getElementById("lastname").value;
-			const towncity = document.getElementById("towncity").value;
-			const postcodezip = document.getElementById("postcodezip").value;
-			const phone = document.getElementById("phone").value;
-			const emailaddress = document.getElementById("emailaddress").value;
+    document.querySelectorAll(".changeQuantity").forEach((input) => {
+        input.addEventListener("change", function () {
+            const productId = input.getAttribute("data-id");
+            const getProduct = order.products.find((p) => p.data._id === productId);
+            if (getProduct) {
+                getProduct.quantity = Number(input.value);
+                saveOrder(order);
+                document.getElementById("total" + productId).innerHTML = ((getProduct.data.price || 0) * Number(input.value)).toFixed(2) + " грн";
+                document.getElementById("allTotal").innerHTML = total(order);
+            }
+        });
+    });
 
-			if (
-				firstname &&
-				lastname &&
-				towncity &&
-				postcodezip &&
-				phone &&
-				emailaddress
-			) {
-				const order = loadOrder();
-				const data = {
-					products: order.products.map((product) => ({
-						product: product.data._id,
-						productquantity: product.data.productquantity || null,
-						quantity: product.quantity,
-					})),
-					commerce: "674d9cbe7f4e98c4f2482a20",
-					delivery: {
-						firstname,
-						lastname,
-						city: towncity,
-						postoffice: postcodezip,
-						phone,
-						email: emailaddress,
-					},
-				};
+    document.querySelectorAll(".changeComment").forEach((input) => {
+        input.addEventListener("change", function () {
+            const productId = input.getAttribute("data-id");
+            const getProduct = order.products.find((p) => p.data._id === productId);
+            if (getProduct) {
+                getProduct.comment = input.value;
+                saveOrder(order);
+            }
+        });
+    });
 
-				fetch("https://webart.work/api/commerce/order/create", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(data),
-				})
-					.then((response) => response.json())
-					.then((data) => {
-						localStorage.removeItem("order");
-						alert("замовлення прийнято");
-						window.location.href = "/";
-					})
-					.catch((error) => {
-						console.error("Error:", error);
-					});
-			} else {
-				alert("Заповніть всі поля");
-			}
-		});
+    document.getElementById("billing-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const firstname = document.getElementById("firstname").value;
+        const lastname = document.getElementById("lastname").value;
+        const towncity = document.getElementById("towncity").value;
+        const postcodezip = document.getElementById("postcodezip").value;
+        const phone = document.getElementById("phone").value;
+        const emailaddress = document.getElementById("emailaddress").value;
+
+        if (!firstname || !lastname || !towncity || !postcodezip || !phone || !emailaddress) {
+            alert("Заповніть всі поля");
+            return;
+        }
+
+        const data = {
+            products: order.products.map((product) => ({
+                product: product.data._id,
+                productquantity: product.selectedQuantity || null,
+                quantity: product.quantity,
+            })),
+            commerce: "674d9cbe7f4e98c4f2482a20",
+            delivery: {
+                firstname,
+                lastname,
+                city: towncity,
+                postoffice: postcodezip,
+                phone,
+                email: emailaddress,
+            },
+        };
+
+        fetch("https://webart.work/api/commerce/order/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then(() => {
+                localStorage.removeItem("order");
+                alert("Замовлення прийнято");
+                window.location.href = "/";
+            })
+            .catch((error) => console.error("Помилка при створенні замовлення:", error));
+    });
+});
+
+
 </script>
+</section>
