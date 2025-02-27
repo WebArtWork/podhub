@@ -1514,7 +1514,7 @@ button:focus:not(:focus-visible) {
 
 
 .header {
-  background-color: #1a1a1a;
+  background-color: var(--violet-color);
   margin-top: 60px;
 }
 
@@ -1522,14 +1522,12 @@ button:focus:not(:focus-visible) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  height: 80px;
+  height: 70px;
 }
 
 .catalog-btn {
-  background-color: #28a745;
-  color: white;
+  background-color: var(--white-color);
+  color: var(--primary-color);
   border: none;
   padding: 10px 15px;
   font-size: 16px;
@@ -1541,7 +1539,7 @@ button:focus:not(:focus-visible) {
 }
 
 .catalog-btn:hover {
-  background-color: #218838;
+  background-color: rgb(222, 222, 222);
 }
 
 .catalog-btn .icon {
@@ -1550,7 +1548,7 @@ button:focus:not(:focus-visible) {
 
 .search-bar {
   display: flex;
-  background-color: #333;
+  background-color: var(--white-color);
   border-radius: 5px;
   overflow: hidden;
   align-items: center;
@@ -1559,9 +1557,9 @@ button:focus:not(:focus-visible) {
 .search-input {
   border: none;
   padding: 8px;
-  color: white;
+  color: var(--p-color);
   background: none;
-  width: 300px;
+  width: 400px;
 }
 
 .search-btn {
@@ -1578,12 +1576,12 @@ button:focus:not(:focus-visible) {
 /* Каталог */
 .catalog-menu {
   position: absolute;
-  color: whitesmoke;
-  top: 80px;
-  left: 10%;
+  color: var(--p-color);
+  top: 70px;
+  left: 4%;
   width: 300px;
   height: auto;
-  background-color: #1a1a1a;
+  background-color: var(--white-color);;
   border-radius: 5px;
   border: 2px solid var(--violet-color);
   display: none;
@@ -1615,7 +1613,7 @@ button:focus:not(:focus-visible) {
 }
 
 .category-item:hover {
-  background-color: #1a1a1a;
+  background-color: var(--white-color);;
 }
 
 /* Відображення підкатегорій збоку */
@@ -1628,9 +1626,9 @@ button:focus:not(:focus-visible) {
   top: 0;
   left: 100%;
   min-width: 250px;
-  background-color: #262626;
+  background-color: var(--white-color);;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow:0 4px 8px var(--primary-color);
   display: none;
   padding: 10px;
 }
@@ -1641,6 +1639,7 @@ button:focus:not(:focus-visible) {
 
 .has-submenu::after {
   content: "▶";
+  color: var(--primary-color);
   position: absolute;
   right: 10px;
   transition: transform 0.3s ease;
@@ -1659,10 +1658,17 @@ button:focus:not(:focus-visible) {
   padding: 10px 15px;
   font-size: 14px;
   cursor: pointer;
-  background-color: #141414;
+  background-color: var(--white-color);;
   transition: background 0.3s ease;
 }
 
 .subcategory-list li:hover {
-  background-color: #1a1a1a;
+  background-color: var(--white-color);;
+}
+.user-cart span{
+  color: var(--white-color);
+  padding: 4px;
+}
+.user-account, .cart{
+  color: var(--white-color);
 }
